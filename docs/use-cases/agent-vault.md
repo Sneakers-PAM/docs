@@ -28,8 +28,8 @@ or audit.
 
 ## The answer: the vault holds them, the MCP serves them
 
-Secrets live in Sneakers-PAM, in [folders](../concepts/secrets-and-folders.md) with their own access
-rules. Agents connect to the [MCP server](../concepts/agents-and-mcp.md) and use its tools to work
+Secrets live in Sneakers-PAM, in [folders](../admin-guide/folders-and-permissions.md) with their own access
+rules. Agents connect to the [MCP server](../user-guide/agents-and-the-mcp.md) and use its tools to work
 with them:
 
 - **Query:** find the secrets an agent may read, by name, folder or type, with metadata only, never
@@ -42,7 +42,7 @@ with them:
   agent session or the shell history.
 - **Manage:** rename, move and retype secrets, organise folders, attach a secret to its target,
   check that the stored credential still works against that target, and turn
-  [rotation and heartbeat](../concepts/heartbeat-and-rotation.md) on or off. The vault does the
+  [rotation and heartbeat](../admin-guide/rotation-and-heartbeat.md) on or off. The vault does the
   rotating, on its schedule.
 
 The MCP server is a thin bridge. It holds no credentials of its own and no access logic: every
@@ -80,7 +80,7 @@ to turn on API access for them.
 
 ### Every action is audited, per agent and per task
 
-The vault writes each tool call to the hash-chained [audit trail](../concepts/audit.md) as the
+The vault writes each tool call to the hash-chained [audit trail](../admin-guide/audit.md) as the
 caller that made it, so the trail shows which agent read, revealed, created or changed what. The
 MCP server's own logs name each caller by an opaque token id, never the token itself, and never
 log arguments or values.
@@ -94,7 +94,7 @@ An agent can't go past its scope by itself:
 
 - A secret the agent can't read is refused. Access is asked for with an access request, and
   someone who can approve for that secret decides, never the one asking.
-- For a secret with an [approval level](../concepts/approvals.md#who-approves-a-reveal), a reveal
+- For a secret with an [approval level](../admin-guide/approval-policy.md#who-approves-a-reveal), a reveal
   through a personal token waits for an owner or a designated approver. The agent opens the
   approval page in the browser, and a person approves with a second factor. On a one-user install
   you confirm the task once yourself.
@@ -152,5 +152,5 @@ network.
 6. **Clean up fast.** If the infrastructure agent misbehaves, an admin revokes its service account
    token. The other agents carry on, and the audit trail shows exactly what that one agent did.
 
-See [Using the MCP](../mcp-guide.md) for what to type to your assistant, and
-[Agents and the MCP](../concepts/agents-and-mcp.md) for how it fits together.
+See [Using the MCP](../user-guide/agents-and-the-mcp.md) for what to type to your assistant, and
+[Agents and the MCP](../user-guide/agents-and-the-mcp.md) for how it fits together.

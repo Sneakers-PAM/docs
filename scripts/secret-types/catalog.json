@@ -1,0 +1,1039 @@
+{
+  "source": {
+    "repository": "Sneakers-PAM/sneakers-vault",
+    "path": "internal/vault/grpcsvc/builtins.go",
+    "commit": "30ac7fd9296ec976eb493d2e4215374df5b2a05d"
+  },
+  "types": [
+    {
+      "id": "type-password",
+      "name": "Password",
+      "fields": [
+        {
+          "key": "username",
+          "label": "Username",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-secure-note",
+      "name": "Secure Note",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "note",
+          "label": "Note",
+          "kind": "FIELD_KIND_MULTILINE",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-web-password",
+      "name": "Web Password",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-ssh-key",
+      "name": "SSH Key",
+      "fields": [
+        {
+          "key": "username",
+          "label": "Username",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "keyFormat",
+          "label": "Key Format",
+          "kind": "FIELD_KIND_SELECT",
+          "options": [
+            "Ed25519",
+            "RSA 4096",
+            "RSA 2048",
+            "ECDSA P-256"
+          ],
+          "defaultValue": "Ed25519",
+          "required": true
+        },
+        {
+          "key": "publicKey",
+          "label": "Public Key",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "privateKey",
+          "label": "Private Key",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "passphrase",
+          "label": "Passphrase",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "heartbeat": true,
+      "checkout": true,
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-api-token",
+      "name": "API Token",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "scheme",
+          "label": "Scheme",
+          "kind": "FIELD_KIND_SELECT",
+          "options": [
+            "Bearer",
+            "OAuth",
+            "Custom header"
+          ],
+          "defaultValue": "Bearer"
+        },
+        {
+          "key": "token",
+          "label": "Token",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "endpoint",
+          "label": "Endpoint / API URL",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-oauth",
+      "name": "OAuth Application",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "clientId",
+          "label": "Client ID",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "clientSecret",
+          "label": "Client Secret",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "redirectUrl",
+          "label": "Redirect URL",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "accessToken",
+          "label": "Access Token",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true
+        },
+        {
+          "key": "refreshToken",
+          "label": "Refresh Token",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-recovery-codes",
+      "name": "Recovery / Backup Codes",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "service",
+          "label": "Service / Site",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "account",
+          "label": "Account / Username",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "codes",
+          "label": "Recovery / Backup Codes",
+          "kind": "FIELD_KIND_MULTILINE",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-database-account",
+      "name": "Database Account",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "engine",
+          "label": "Engine",
+          "kind": "FIELD_KIND_SELECT",
+          "options": [
+            "PostgreSQL",
+            "MySQL / MariaDB",
+            "SQL Server",
+            "Oracle",
+            "MongoDB",
+            "Other"
+          ],
+          "defaultValue": "PostgreSQL"
+        },
+        {
+          "key": "server",
+          "label": "Server",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "database",
+          "label": "Database",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true,
+          "rotates": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "heartbeat": true,
+      "origin": "TYPE_ORIGIN_SYSTEM",
+      "rotation": true
+    },
+    {
+      "id": "type-unix-ssh",
+      "name": "Password Account (SSH)",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-windows-local",
+      "name": "Windows Account (Local)",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "machine",
+          "label": "Machine",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true,
+          "rotates": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "heartbeat": true,
+      "checkout": true,
+      "origin": "TYPE_ORIGIN_SYSTEM",
+      "rotation": true
+    },
+    {
+      "id": "type-windows-domain",
+      "name": "Windows Domain Account",
+      "fields": [
+        {
+          "key": "domain",
+          "label": "Domain",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true,
+          "rotates": true
+        }
+      ],
+      "heartbeat": true,
+      "checkout": true,
+      "origin": "TYPE_ORIGIN_SYSTEM",
+      "rotation": true
+    },
+    {
+      "id": "type-active-directory",
+      "name": "Active Directory Account",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "domain",
+          "label": "Domain (FQDN)",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "netbios",
+          "label": "NetBIOS domain",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "logonFormat",
+          "label": "Logon format",
+          "kind": "FIELD_KIND_SELECT",
+          "options": [
+            "NETBIOS",
+            "UPN"
+          ]
+        },
+        {
+          "key": "upnSuffix",
+          "label": "UPN suffix",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "username",
+          "label": "Account Name",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true,
+          "rotates": true
+        },
+        {
+          "key": "serviceAccount",
+          "label": "Service account",
+          "kind": "FIELD_KIND_BOOLEAN"
+        },
+        {
+          "key": "gmsa",
+          "label": "gMSA account",
+          "kind": "FIELD_KIND_BOOLEAN"
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "heartbeat": true,
+      "checkout": true,
+      "origin": "TYPE_ORIGIN_SYSTEM",
+      "rotation": true
+    },
+    {
+      "id": "type-bank-account",
+      "name": "Bank Account",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "bank",
+          "label": "Bank name",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "accountNumber",
+          "label": "Account number",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true,
+          "superSensitive": true,
+          "pattern": "^\\d{4,17}$",
+          "maxLength": 17
+        },
+        {
+          "key": "routingNumber",
+          "label": "Routing number",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true,
+          "superSensitive": true,
+          "pattern": "^\\d{9}$",
+          "maxLength": 9
+        },
+        {
+          "key": "onlineUsername",
+          "label": "Online username",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "onlinePassword",
+          "label": "Online password",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true,
+          "superSensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-credit-card",
+      "name": "Credit Card",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "cardholder",
+          "label": "Cardholder",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "number",
+          "label": "Card number",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true,
+          "superSensitive": true,
+          "pattern": "^[0-9 ]{13,23}$",
+          "maxLength": 23
+        },
+        {
+          "key": "expiry",
+          "label": "Expiry (MM/YY or MM/YYYY)",
+          "kind": "FIELD_KIND_TEXT",
+          "pattern": "^(0[1-9]|1[0-2])\\/([0-9]{2}|[0-9]{4})$",
+          "maxLength": 7
+        },
+        {
+          "key": "cvv",
+          "label": "CVV",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true,
+          "superSensitive": true,
+          "pattern": "^[0-9]{3,4}$",
+          "maxLength": 4
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-license-key",
+      "name": "License Key",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "product",
+          "label": "Product",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "licenseKey",
+          "label": "License key",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-combination-lock",
+      "name": "Combination Lock",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "location",
+          "label": "Location",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "combination",
+          "label": "Combination",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-pin",
+      "name": "PIN",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "pin",
+          "label": "PIN",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true,
+          "superSensitive": true,
+          "pattern": "^\\d{3,12}$",
+          "maxLength": 12
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-ssn",
+      "name": "Social Security Number",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "holderName",
+          "label": "Holder name",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "ssn",
+          "label": "SSN",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true,
+          "superSensitive": true,
+          "pattern": "^\\d{3}-?\\d{2}-?\\d{4}$",
+          "maxLength": 11
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-contact",
+      "name": "Contact",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "fullName",
+          "label": "Full name",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true,
+          "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+          "maxLength": 254
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true,
+          "pattern": "^[0-9+()\\-.\\s]{7,20}$",
+          "maxLength": 20
+        },
+        {
+          "key": "addressLine1",
+          "label": "Address line 1",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "addressLine2",
+          "label": "Address line 2 (apt/unit)",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "city",
+          "label": "City",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "state",
+          "label": "State",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "zip",
+          "label": "ZIP",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-anthropic-token",
+      "name": "Anthropic Token",
+      "fields": [
+        {
+          "key": "description",
+          "label": "Description",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "token",
+          "label": "Token",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true,
+          "pattern": "^sk-ant-oa"
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    },
+    {
+      "id": "type-ssl-cert",
+      "name": "SSL/PKI Certificate",
+      "fields": [
+        {
+          "key": "certificate",
+          "label": "Certificate",
+          "kind": "FIELD_KIND_MULTILINE",
+          "required": true
+        },
+        {
+          "key": "privateKey",
+          "label": "Private Key",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "sensitive": true,
+          "superSensitive": true
+        },
+        {
+          "key": "chain",
+          "label": "Chain",
+          "kind": "FIELD_KIND_MULTILINE"
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "issuer",
+          "label": "Issuer",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "sans",
+          "label": "Subject Alternative Names",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "serialNumber",
+          "label": "Serial Number",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "fingerprintSha256",
+          "label": "Fingerprint (SHA-256)",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "notBefore",
+          "label": "Not Before",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "notAfter",
+          "label": "Not After",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "keyAlgorithm",
+          "label": "Key Algorithm",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "keyBits",
+          "label": "Key Size (bits)",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "hasPrivateKey",
+          "label": "Private Key Present",
+          "kind": "FIELD_KIND_BOOLEAN"
+        },
+        {
+          "key": "isCA",
+          "label": "CA Certificate",
+          "kind": "FIELD_KIND_BOOLEAN"
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "kind": "FIELD_KIND_MULTILINE"
+        }
+      ],
+      "origin": "TYPE_ORIGIN_SYSTEM"
+    }
+  ],
+  "extensions": [
+    {
+      "id": "ext-aws-iam-key",
+      "name": "Amazon IAM Access Key",
+      "fields": [
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "kind": "FIELD_KIND_TEXT"
+        },
+        {
+          "key": "accessKeyId",
+          "label": "Access Key ID",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "Secret Access Key",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "origin": "TYPE_ORIGIN_EXTENSION",
+      "vendor": "Amazon Web Services"
+    },
+    {
+      "id": "ext-azure-ad",
+      "name": "Microsoft Azure AD Account",
+      "fields": [
+        {
+          "key": "tenantId",
+          "label": "Tenant ID",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "appId",
+          "label": "Application (client) ID",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "clientSecret",
+          "label": "Client secret",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "origin": "TYPE_ORIGIN_EXTENSION",
+      "vendor": "Microsoft Azure"
+    },
+    {
+      "id": "ext-gcp-sa-key",
+      "name": "Google Cloud Service Account Key",
+      "fields": [
+        {
+          "key": "project",
+          "label": "Project ID",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "clientEmail",
+          "label": "Service account email",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "keyJson",
+          "label": "Key (JSON)",
+          "kind": "FIELD_KIND_PASSWORD",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "origin": "TYPE_ORIGIN_EXTENSION",
+      "vendor": "Google Cloud"
+    },
+    {
+      "id": "type-docusign-ssh-keys",
+      "name": "Docusign App SSH Keys",
+      "fields": [
+        {
+          "key": "integrationKey",
+          "label": "Integration Key (Client ID)",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID (Impersonated user GUID)",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "apiAccountId",
+          "label": "API Account ID",
+          "kind": "FIELD_KIND_TEXT",
+          "required": true
+        },
+        {
+          "key": "baseUri",
+          "label": "Base URI",
+          "kind": "FIELD_KIND_TEXT",
+          "defaultValue": "account-d.docusign.com"
+        },
+        {
+          "key": "privateKey",
+          "label": "RSA Private Key",
+          "kind": "FIELD_KIND_SENSITIVE",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "origin": "TYPE_ORIGIN_EXTENSION",
+      "vendor": "Docusign"
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn-ssh-default",
+      "name": "Default SSH",
+      "protocol": "ssh",
+      "port": 22,
+      "description": "Standard SSH to Unix/Linux hosts."
+    },
+    {
+      "id": "conn-winrm-default",
+      "name": "Default WinRM",
+      "protocol": "winrm",
+      "port": 5986,
+      "useTls": true,
+      "description": "WinRM over HTTPS to Windows hosts."
+    },
+    {
+      "id": "conn-ldaps",
+      "name": "Directory (LDAPS)",
+      "protocol": "ldap",
+      "port": 636,
+      "useTls": true,
+      "description": "Active Directory / LDAP over TLS."
+    }
+  ]
+}

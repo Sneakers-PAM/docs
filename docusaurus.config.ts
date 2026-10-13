@@ -28,6 +28,12 @@ const config: Config = {
   onBrokenAnchors: 'throw',
 
   markdown: {
+    // future.v4 turns this off by default; the docs rely on explicit heading
+    // IDs (`## Heading {#id}`), which need the MDX1-compat escape or acorn
+    // tries to parse "{#id}" as a JS expression and fails the build.
+    mdx1Compat: {
+      headingIds: true,
+    },
     hooks: {
       onBrokenMarkdownLinks: 'throw',
       onBrokenMarkdownImages: 'throw',
@@ -84,9 +90,12 @@ const config: Config = {
         srcDark: 'img/mark-dark.svg',
       },
       items: [
+        {to: '/download', label: 'Download', position: 'left'},
         {to: '/docs/getting-started', label: 'Getting started', position: 'left'},
-        {to: '/docs/concepts', label: 'Concepts', position: 'left', activeBasePath: '/docs/concepts'},
-        {to: '/docs/mcp-guide', label: 'Using the MCP', position: 'left'},
+        {to: '/docs/admin-guide', label: 'Admin guide', position: 'left', activeBasePath: '/docs/admin-guide'},
+        {to: '/docs/appliance-guide', label: 'Appliance guide', position: 'left', activeBasePath: '/docs/appliance-guide'},
+        {to: '/docs/user-guide/agents-and-the-mcp', label: 'Using the MCP', position: 'left'},
+        {to: '/changelog', label: 'Changelog', position: 'left'},
         {to: '/docs/security', label: 'Security', position: 'left'},
         {type: 'docsVersionDropdown', position: 'right'},
         {
