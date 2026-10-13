@@ -1,6 +1,6 @@
 # Heartbeat and rotation
 
-A secret that's linked to a target (see [Secrets and folders](./secrets-and-folders.md)) can
+A secret that's linked to a target (see [Secrets and folders](./folders-and-permissions.md)) can
 be kept in sync with that target automatically.
 
 ## Heartbeat

@@ -15,6 +15,6 @@ Records come in two tiers:
   denied, shown with a lighter, dashed marker.
 
 The trail records metadata about actions, never secret material itself — see
-[Secrets and folders](./secrets-and-folders.md) for where the values themselves live, and
+[Secrets and folders](./folders-and-permissions.md) for where the values themselves live, and
 [Break-glass](./break-glass.md) for why that path in particular always lands at the audit
 tier.
