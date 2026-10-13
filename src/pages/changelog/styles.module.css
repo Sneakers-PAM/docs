@@ -1,0 +1,46 @@
+.unitSection {
+  margin-top: 2.5rem;
+}
+
+.release {
+  border-top: 1px solid var(--ifm-toc-border-color);
+  padding: 1.25rem 0;
+}
+
+.releaseHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.releaseVersion {
+  margin: 0;
+}
+
+.badge {
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 999px;
+  padding: 0.1rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.date {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.9rem;
+}
+
+.notes {
+  margin-top: 0.75rem;
+}
+
+.notes h4 {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.empty {
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+}
