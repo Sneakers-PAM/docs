@@ -22,8 +22,8 @@ A few design choices exist specifically to keep a problem contained if one occur
   that key, or an image that's been modified, is refused outright.
 - **Backups are encrypted to a separate key from the one you log in with**, so a compromised login
   credential alone can't be used to read a backup.
-- **Every reveal, check-out and break-glass action is logged** in a hash-chained audit trail (see
-  [Agents and the MCP](./concepts/agents-and-mcp.md) and [Break-glass](./concepts/break-glass.md)) that
+- **Every reveal, check-out and break-glass action is logged** in a hash-chained [audit
+  trail](./admin-guide/audit.md) (see [Break-glass](./admin-guide/break-glass.md)) that
   detects a changed, deleted or reordered record.
 - **Lab and production never mix.** A key, image or artifact marked as lab, test or ephemeral is
   refused for production use.
