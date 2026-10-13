@@ -59,11 +59,11 @@ function Hero(): ReactNode {
           scoped secret delivery, and an audit trail for every access.
         </p>
         <div className={styles.actions}>
-          <Link className="button button--primary button--lg" to="/docs/getting-started">
-            Getting started
+          <Link className="button button--primary button--lg" to="/download">
+            Download
           </Link>
-          <Link className="button button--secondary button--lg" to="/docs/concepts">
-            Concepts
+          <Link className="button button--secondary button--lg" to="/docs/getting-started">
+            Getting started
           </Link>
           <Link className="button button--secondary button--lg" href="https://github.com/Sneakers-PAM">
             View on GitHub
@@ -124,6 +124,23 @@ function Story(): ReactNode {
   );
 }
 
+function UseCase(): ReactNode {
+  return (
+    <section className={styles.notice}>
+      <div className="container">
+        <Heading as="h2">🤖 Built for agents, not just people</Heading>
+        <p>
+          AI agents and automated tools need credentials as much as people do. Sneakers-PAM's MCP
+          server lets an agent find, use and even generate secrets through the same approvals and
+          audit trail a person would use — see{' '}
+          <Link to="/docs/use-cases/agent-vault">the vault-for-agents use case</Link> for a hub of
+          agents keeping their credentials out of every workspace they touch.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function PreReleaseNotice(): ReactNode {
   return (
     <section className={styles.notice}>
@@ -152,6 +169,7 @@ export default function Home(): ReactNode {
       <main>
         <Features />
         <Story />
+        <UseCase />
         <PreReleaseNotice />
       </main>
     </Layout>

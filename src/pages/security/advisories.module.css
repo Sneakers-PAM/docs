@@ -1,0 +1,63 @@
+.empty {
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+}
+
+.list {
+  margin-top: 1.5rem;
+}
+
+.advisory {
+  border-top: 1px solid var(--ifm-toc-border-color);
+  padding: 1.25rem 0;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.1rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--ifm-color-emphasis-200);
+}
+
+.critical,
+.high {
+  background: var(--ifm-color-danger-contrast-background);
+  color: var(--ifm-color-danger-contrast-foreground);
+}
+
+.medium {
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+}
+
+.low,
+.unknown {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.cve {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.date {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.9rem;
+}
+
+.table {
+  margin-top: 0.5rem;
+}

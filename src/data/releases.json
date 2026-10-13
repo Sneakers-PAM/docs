@@ -1,4 +1,1423 @@
 {
-  "releases": [],
+  "releases": [
+    {
+      "repo": "Sneakers-PAM/sneakers-appliance",
+      "tag": "v0.1.0-rc.1",
+      "name": "v0.1.0-rc.1",
+      "channel": "rc",
+      "publishedAt": "2026-10-13T09:57:40.000Z",
+      "url": "https://github.com/Sneakers-PAM/sneakers-appliance/releases/tag/v0.1.0-rc.1",
+      "units": [
+        {
+          "unit": "baseOS",
+          "version": "0.1.0-rc.1"
+        },
+        {
+          "unit": "baseWeb",
+          "version": "0.1.0-rc.1"
+        },
+        {
+          "unit": "product",
+          "version": "0.1.0-rc.1"
+        }
+      ],
+      "notes": [
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "What Changed 👀"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🚀 Features"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "feat(product): reinstall the installed version from Updates and with sneakers reinstall @Bugs5382 (#378)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(product): remove the installed product and its data with sneakers reset @Bugs5382 (#373)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(product): wait for the cluster's DNS and each phase's needs in an init container @Bugs5382 (#353)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(product): apply the product in phases, each gated on Ready @Bugs5382 (#346)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(status): let an admin hide the reduced-protection notice @Bugs5382 (#345)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(edgefall): push the box state as server-sent events @Bugs5382 (#335)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(edgefall): follow the box state over /\\_box/events in the box-state client @Bugs5382 (#328)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(release): name every release file by its version alone @Bugs5382 (#293)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(osaudit): archive a log file before its retention prune, and audit every removal @Bugs5382 (#286)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(updates): a Base OS always ships with its Base Web @Bugs5382 (#280)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(os): disk guard: log caps, audit rotation, self-cleanup, growth and usage alerts @Bugs5382 (#281)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(updates): GitHub Releases as the built-in update source, with channels @Bugs5382 (#282)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(shell): tab completion in the closed-shell menu @Bugs5382 (#279)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(rootshell): add watch to the root-shell image @Bugs5382 (#276)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(shell): document every closed-shell command and list the network set keys @Bugs5382 (#277)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(product): product email settings on :8443 @Bugs5382 (#271)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(bundle): serve the OAuth issuer at "
+              },
+              {
+                "t": "link",
+                "v": "https://\\<fqdn>/oauth",
+                "href": "https://\\<fqdn>/oauth"
+              },
+              {
+                "t": "text",
+                "v": " @Bugs5382 (#273)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(release): ship the whole Sneakers product from one appliance tag @Bugs5382 (#262)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(product): give the product the box's own host name @Bugs5382 (#263)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(keycustody): the recovery escrow carries the product's keys @Bugs5382 (#261)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(osadmin): the Import page backend and imported-users mode @Bugs5382 (#260)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(upgrade): three update units: Base OS, Base Web and Product @Bugs5382 (#245)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat: build m appliance wave 2 @Bugs5382 (#246)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(edge): box-state pages carry the product bundle's logo and colours @Bugs5382 (#215)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(upgrade): discard uploads and stages, one upload at a time, and a base version range for product bundles @Bugs5382 (#214)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(elevated): kubectl and helm work in the root shell against the installed k0s @Bugs5382 (#213)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(upgrade): an internal update mirror over HTTP or HTTPS with its own CA @Bugs5382 (#206)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(shell): offer a product's commands in its own group, only when it is installed @Bugs5382 (#210)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(edge): serve the product's Ingresses on the lab edge @Bugs5382 (#209)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(upgrades): the Upgrading screen shows each step with progress on the console @Bugs5382 (#188)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(edge): route the box state to edgefall on the lab edge, and load the poller on the hello page @Bugs5382 (#187)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(edge): serve the box state on the product edge while the cluster is down @Bugs5382 (#186)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(osadmin): generate recovery keys on the box, and stamp the lab's :8443 pages @Bugs5382 (#164)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(console): an information-only console at the large font @Bugs5382 (#136)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(osadmin): the certificate store and a live :8443 certificate swap @Bugs5382 (#138)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(access): password and TOTP sign-in, a sealed setup code and certificate-only SSH @Bugs5382 (#139)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(bundle): ship the product stack as a signed bundle installed from Updates @Bugs5382 (#137)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(console): the first-boot wizard, the console and the first-boot step machine @Bugs5382 (#124)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(netd): the network daemon and sneakers-sshd-run @Bugs5382 (#122)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(init): unlock and mount the state volumes and serve KeyCustody @Bugs5382 (#121)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(access): record who revoked a login key @Bugs5382 (#116)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(upgrade): an owner override that ends an open elevated shell to apply @Bugs5382 (#111)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(build): the root image with the access services, and the airgap bundle @Bugs5382 (#90)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(accessd): one-time elevation, the user CA and the enrolment window @Bugs5382 (#82)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(accessd): the access service, so osadmin runs unprivileged @Bugs5382 (#81)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(init): carry out reboot, shutdown, forced power and the factory reset @Bugs5382 (#80)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(shell): add the closed shell @Bugs5382 (#78)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(sshconfig): render sshd\\_config, authorized keys and principals @Bugs5382 (#77)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(osadmin): factory reset by quorum, forced power and the update flows @Bugs5382 (#74)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(osadmin): the :8443 appliance admin server, sign-in and page API @Bugs5382 (#73)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(ukikey): carry the update key in the signed UKI @Bugs5382 (#68)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(keycustody): import an escrow on new hardware @Bugs5382 (#66)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(keycustody): turn Secure Boot on or off later and reseal @Bugs5382 (#63)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(network): add the settings model, validation and auto-revert @Bugs5382 (#60)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(accounts): render passwd, group and shadow from the access store @Bugs5382 (#56)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(osaudit): add the chained OS audit log and session recordings @Bugs5382 (#41)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "build(openssh): add pinned static OpenSSH and busybox builds @Bugs5382 (#47)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(ova): build the OVA and the qcow2 for VMware and Proxmox VE @Bugs5382 (#53)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(image): stage releases into the inactive slot with boot counting @Bugs5382 (#48)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(os): build the kernel and static tools from pinned sources @Bugs5382 (#46)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(access): parse keys and keep the access store's invariants @Bugs5382 (#37)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(build): assemble the UKI and port the PCR 11 predictor @Bugs5382 (#40)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(consoleui): show the protection level in plain words @Bugs5382 (#36)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(keycustody): seal small secrets and write the escrow @Bugs5382 (#34)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(init): serve init.sock and run as PID 1 @Bugs5382 (#27)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(keycustody): initialize TPM or key-file custody and format the state @Bugs5382 (#32)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(keycustody): port the TPM sealing and LUKS2 code @Bugs5382 (#29)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(secureboot): read state, enrol org keys and apply the mismatch rule @Bugs5382 (#26)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(init): decide boot phases and supervise the service table @Bugs5382 (#24)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(switchroot): find the root by its verity hash @Bugs5382 (#21)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(disk): write the installed layout and plan the first-boot partitions @Bugs5382 (#22)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(kit): verify then build atomically, with the refusal suite @Bugs5382 (#18)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(verify): check Authenticode, verity, the airgap bundle and the enrolment material @Bugs5382 (#16)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(verify): verify signatures, the manifests and the layer digests @Bugs5382 (#14)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(kit): add the build-time pins, the kit skeleton and the appliance manifest @Bugs5382 (#12)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🐛 Bug Fixes"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): run one update apply or revert at a time @Bugs5382 (#404)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(disk): mount the state and backup volumes without delayed allocation @Bugs5382 (#399)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(product): follow every apply until its phases are up, and never let a stale ask act @Bugs5382 (#392)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(bundle): refuse a wait the release's wait command refuses, and run every rendered wait @Bugs5382 (#383)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(kubeapi): mint a new service account token when the API server refuses the cached one @Bugs5382 (#377)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(productup): take a phase's workloads over from the stack an earlier version kept them in @Bugs5382 (#374)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(productup): stop an unphased running product in the incoming slot's phase order @Bugs5382 (#372)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(productup): stop the product by the running slot's spec, one phase at a time, the database last @Bugs5382 (#370)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(init): run a service's pre-start once at a time; make k0s's image links safe @Bugs5382 (#368)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(productup): quiesce an unphased product's switch workloads and never wait on product workloads at the cluster step @Bugs5382 (#365)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(init): keep the ready line and earlier lines on the consoles at a claim @Bugs5382 (#363)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(test): sample the phases after a power loss only once the box runs @Bugs5382 (#361)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(edgefall,build): keep a failed product's reason across an edgefall restart; count every product input @Bugs5382 (#360)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(test): read the phase pods line and check for sandbox errors after a power loss @Bugs5382 (#359)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(bundle): give the MCP server its protected-resource metadata @Bugs5382 (#356)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): keep the self-signed :8443 certificate while it names every address @Bugs5382 (#354)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(k0s): run the box's own copy of the CNI plugins @Bugs5382 (#342)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(mcp): answer the MCP switch once the product is ready with it @Bugs5382 (#350)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(shell): word the history help in plain terms @Bugs5382 (#352)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(shell): keep prompt answers out of arrow-key recall @Bugs5382 (#348)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(shell): ? lists what a command takes, Tab lists one per line, usage after errors, history @Bugs5382 (#331)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(test): wait for the pushed event instead of a non-blocking read @Bugs5382 (#343)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(test): check the :8443 fingerprint against the status answer @Bugs5382 (#341)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): name a lab Base Web hotfix by its build label @Bugs5382 (#336)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(edgefall): ask the box state every 45 seconds while the box runs @Bugs5382 (#325)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(productup): wait for a spec-only change before the product counts as ready @Bugs5382 (#319)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(units): a lab patch names its full release by the earlier name @Bugs5382 (#317)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(edge): hold every request on 443 until the product is ready @Bugs5382 (#316)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osaudit): give a session's recording entries the outcome ok @Bugs5382 (#314)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(keycustody): restore escrowed product keys into the box secrets @Bugs5382 (#312)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(updates): don't offer a pages revert that can't change what serves @Bugs5382 (#308)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(diskguard): say what a volume really grew, over hours of samples @Bugs5382 (#304)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(shell): say a network change netd keeps at once is kept @Bugs5382 (#302)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(rootshell): give busybox-safe disk lines in the root shell's help @Bugs5382 (#306)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(shell): offer only the switches the product declares in mcp's help @Bugs5382 (#298)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(import): drop the step log's colour codes from the Import page @Bugs5382 (#295)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(product): hold a product apply's or revert's history until it's ready @Bugs5382 (#292)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(product): an install or update is done only once the product is ready @Bugs5382 (#290)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(bundle): route only Hydra's own paths under /oauth, not the consent page @Bugs5382 (#288)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(import): read the TOTP key from the box secret the product declares @Bugs5382 (#287)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(network): accept IANA time zones on the box and show the console clock in it @Bugs5382 (#285)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(product): give the product the box's Base OS and Base Web versions @Bugs5382 (#274)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(shell): wire the closed shell's mcp command to the product's MCP switch @Bugs5382 (#272)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(mcp): restart the switch's workloads only once k0s has applied its stacks @Bugs5382 (#259)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix: build m appliance wave 1 @Bugs5382 (#244)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(upgrade): show a product install's steps and hold 443 until the edge is up @Bugs5382 (#222)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(ssh): pair issued keys with their certificate, and list base releases in the mirror index @Bugs5382 (#221)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(console): show the base and the product from Status on the status screen @Bugs5382 (#207)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): start a stage's steps with verifying alone until the header is read @Bugs5382 (#202)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): fail an apply whose reboot never comes @Bugs5382 (#211)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(firewall): accept 22 and 8443 on lo so the box can reach its own address @Bugs5382 (#201)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): ask for a TOTP code only at Apply, Revert and other critical steps @Bugs5382 (#203)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(elevated): the root shell prompt works and the box always has a host name @Bugs5382 (#204)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(deps): bump golang.org/x/net to v0.60.0 and Go to 1.26.9 for GO-2026-6617 @Bugs5382 (#205)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(imageupgrade): Status and Updates name the release the next stage removes @Bugs5382 (#185)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(imageupgrade): remove the files a staged release leaves behind and audit the releases it drops @Bugs5382 (#184)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(certstore): name the checks in a names refusal, and say when the box has no host name @Bugs5382 (#180)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): a fresh code for each SSH key, and the revert target in Status @Bugs5382 (#182)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(init): mount devpts so SSH logins get a terminal @Bugs5382 (#177)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(netd): confirm a network change after a reload, and name audit targets in words @Bugs5382 (#171)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(console): wave 3 sign-off fixes for the console, boot screen and SSH @Bugs5382 (#172)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): per-call codes on Apply and Revert, a reverted record, and the staged slot @Bugs5382 (#173)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): one setup-done gate for the setup-only calls @Bugs5382 (#170)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(certstore): use bare management IPs, not interface prefixes, as names and probe targets @Bugs5382 (#169)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): before setup, every :8443 page goes to /setup @Bugs5382 (#167)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(keys): never silently regenerate an existing lab key set @Bugs5382 (#163)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(appliance): the edge's ping probe, CoreDNS with no DNS server and the k0s test lint @Bugs5382 (#150)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(appliance): product bundle start, MarkGood, the BLUE to RED test and the kit floor @Bugs5382 (#146)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(init): serve ImageService so Updates can stage releases @Bugs5382 (#141)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(appliance): physical NIC choice, https redirect on 8443 and live sessions @Bugs5382 (#132)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(updatepkg): take a lab version that carries its build number @Bugs5382 (#125)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(init): show the boot and the Secure Boot choice on every console @Bugs5382 (#119)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): say why the release build stops without SIGNATURES @Bugs5382 (#109)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(init): no default Secure Boot choice outside Setup Mode, and a durable choice @Bugs5382 (#108)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(init): pass nosuid and nodev to /run and /tmp as flags only @Bugs5382 (#91)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(access): revoke removed login keys; feat(elevation): maintenance during an update @Bugs5382 (#89)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(access): reserve console; feat(shell): Ctrl-C withdraws elevation @Bugs5382 (#88)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🔐 Security"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "fix(osadmin): one setup-done gate for the setup-only calls @Bugs5382 (#170)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "📄 Documentation"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "docs(compliance): add CRYPTO.md and an export compliance note @Bugs5382 (#257)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "docs: add the production keys runbook @Bugs5382 (#55)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "docs: build your image and Secure Boot @Bugs5382 (#65)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🧩 Dependency Updates"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "build(openssh): add pinned static OpenSSH and busybox builds @Bugs5382 (#47)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "Extra"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "inline": [
+            {
+              "t": "bold",
+              "v": "Full Changelog"
+            },
+            {
+              "t": "text",
+              "v": ": "
+            },
+            {
+              "t": "link",
+              "v": "https://github.com/Sneakers-PAM/sneakers-appliance/compare/c06a6a30d0093cfa290776d78fa94cd064001873...v0.1.0-rc.1",
+              "href": "https://github.com/Sneakers-PAM/sneakers-appliance/compare/c06a6a30d0093cfa290776d78fa94cd064001873...v0.1.0-rc.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "Sneakers-PAM/sneakers-release",
+      "tag": "v0.1.0-rc.1",
+      "name": "v0.1.0-rc.1",
+      "channel": "rc",
+      "publishedAt": "2026-10-13T03:32:33.000Z",
+      "url": "https://github.com/Sneakers-PAM/sneakers-release/releases/tag/v0.1.0-rc.1",
+      "units": [
+        {
+          "unit": "product",
+          "version": "0.1.0-rc.1"
+        }
+      ],
+      "notes": [
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "What Changed 👀"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🚀 Features"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "feat(migrate): add a wait command for an init container's dependency gate @Bugs5382 (#105)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(release): pin the sneakers-migrate image for the appliance's Import page @Bugs5382 (#88)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(release): pin each service image's source commit in the manifest @Bugs5382 (#85)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(migrate): the move onto the appliance: a mapping file, a sign-in reset and parity @Bugs5382 (#86)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(charts): add small-box and large-box sizing examples @Bugs5382 (#45)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(migrate): add sneakers-migrate export, import and verify @Bugs5382 (#35)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(charts): add the web staff and admin apps @Bugs5382 (#36)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "feat(charts): port the Helm charts and the release manifest @Bugs5382 (#10)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🐛 Bug Fixes"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "fix(migrate): let wait gate on the cluster's DNS alone @Bugs5382 (#115)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(charts): stop the bundled PostgreSQL with a fast shutdown and its checkpoint @Bugs5382 (#113)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(charts): size the probes for a small box and keep startup on the process @Bugs5382 (#109)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(migrate): say the first admin's one-time password is set, in either mode @Bugs5382 (#100)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(migrate): let verify pass with second factors enrolled after the import @Bugs5382 (#98)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(migrate): wait for each service on the first connection @Bugs5382 (#95)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(charts): mount the gateway's service account so diagnostics read Kubernetes @Bugs5382 (#92)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): pin the gateway and MCP mains with the machine API fix @Bugs5382 (#87)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): pin the appliance platform and load optional ConfigMaps @Bugs5382 (#81)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): pin k0s's own images for an airgapped node @Bugs5382 (#84)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(chart): one global workload token issuer, and k0s's documented @Bugs5382 (#71)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(deps): go 1.26.9 and x/net for GO-2026-6617 @Bugs5382 (#62)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): v0.1.0 wave 1 chart fixes (MCP\\_URL, author credit, mcp test, mfaMaxAge, cert-manager) @Bugs5382 (#58)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(charts): probe the services' livez and readyz in the smoke test @Bugs5382 (#47)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(charts): let the gateway's diagnostics read the MCP server's build @Bugs5382 (#40)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(charts): probe liveness on the process and readiness on dependencies @Bugs5382 (#39)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): limit the bundled Kratos, Hydra, Valkey and PostgreSQL to their callers @Bugs5382 (#33)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "fix(release): let each service's port take only its real callers @Bugs5382 (#32)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "⚠️ Changes"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "refactor(charts): drop the AUTH\\_BACKEND setting @Bugs5382 (#18)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🗑 Removed"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "refactor(charts): drop the AUTH\\_BACKEND setting @Bugs5382 (#18)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "📄 Documentation"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "docs(compliance): add CRYPTO.md and an export compliance note @Bugs5382 (#83)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "docs(release): describe the production environment @Bugs5382 (#82)"
+              }
+            ],
+            [
+              {
+                "t": "text",
+                "v": "docs(release): add the manual checks for a release candidate @Bugs5382 (#29)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "🧩 Dependency Updates"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "t": "text",
+                "v": "chore(deps): bump the callee proto pins @[github-actions[bot]]("
+              },
+              {
+                "t": "link",
+                "v": "https://github.com/apps/github-actions",
+                "href": "https://github.com/apps/github-actions"
+              },
+              {
+                "t": "text",
+                "v": ") (#56)"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "inline": [
+            {
+              "t": "text",
+              "v": "Extra"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "inline": [
+            {
+              "t": "bold",
+              "v": "Full Changelog"
+            },
+            {
+              "t": "text",
+              "v": ": "
+            },
+            {
+              "t": "link",
+              "v": "https://github.com/Sneakers-PAM/sneakers-release/compare/5661e2db2913b711cdc92104ef443bdc84bde8f9...v0.1.0-rc.1",
+              "href": "https://github.com/Sneakers-PAM/sneakers-release/compare/5661e2db2913b711cdc92104ef443bdc84bde8f9...v0.1.0-rc.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "advisories": []
 }
