@@ -1,6 +1,6 @@
 # Break-glass
 
-Normal access in Sneakers-PAM goes through the owner's rules and, often, an [approval](./approvals.md).
+Normal access in Sneakers-PAM goes through the owner's rules and, often, an [approval](./approval-policy.md).
 **Break-glass** is the deliberately narrower emergency path for when that normal route isn't fast
 enough or isn't available — a production incident, for instance.
 
