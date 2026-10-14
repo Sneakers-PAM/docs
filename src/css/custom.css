@@ -66,9 +66,10 @@ h1, h2, h3,
   letter-spacing: -0.02em;
 }
 
-/* Light theme: every surface sits on the same cream, and colour moves to the
-   borders and the text, so nothing is printed on a pale tint. */
+/* Light theme: every surface is plain white, and colour moves to the borders
+   and the text, so nothing is printed on a pale tint. */
 :root:not([data-theme='dark']) {
+  --sp-bg: #FFFFFF;
   --sp-surface: var(--sp-bg);
   --sp-sunken: var(--sp-bg);
   --sp-muted: #454B58;
