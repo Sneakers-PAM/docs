@@ -69,8 +69,17 @@ For an [SSH Key](../admin-guide/secret-types/ssh-key.md) secret with a target, t
 signed in with the stored key. The key never reaches your browser, and the session's start and
 end are audited.
 
-The session connects only to a host that presents one of the target's pinned SSH host keys, so a
-target nobody has pinned yet is refused. Sessions end on their own after 8 hours.
+The terminal works whichever way you opened Sneakers-PAM — a host name, an IPv4 address or an
+IPv6 address — it connects back on that same address, so there's nothing extra to set up for a
+box reached by IP.
+
+A target with no pinned SSH host key is refused up front, before anything connects: a site admin
+sees **Pin the host key** right there, and anyone else sees where an admin pins it
+([Targets and connections](../admin-guide/targets-and-connections.md#host-keys)). Once a target is
+pinned, the session connects only to a host presenting one of its pins. A connect that can't reach
+the target, or stalls partway through, says why — such as "couldn't reach the box's terminal
+service" or which step it got stuck on — instead of sitting on **Connecting** with no explanation.
+Sessions end on their own after 8 hours.
 
 ## 🕰️ History and earlier versions {#history}
 
