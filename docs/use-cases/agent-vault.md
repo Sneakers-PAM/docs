@@ -8,7 +8,7 @@ them. The vault holds the passwords, keys and tokens, and the agents query, stor
 through the Sneakers-PAM MCP server, so your development secrets don't leak into everything the
 agents touch.
 
-## The problem: agents leak credentials
+## 🕳️ The problem: agents leak credentials
 
 An agent that needs a password usually gets it the quick way, and every quick way leaves a copy
 behind:
@@ -26,7 +26,7 @@ behind:
 Each copy is one more place the secret can leak from, and one more copy you can't rotate, revoke
 or audit.
 
-## The answer: the vault holds them, the MCP serves them
+## 🗄️ The answer: the vault holds them, the MCP serves them
 
 Secrets live in Sneakers-PAM, in [folders](../admin-guide/folders-and-permissions.md) with their own access
 rules. Agents connect to the [MCP server](../user-guide/agents-and-the-mcp.md) and use its tools to work
@@ -37,7 +37,9 @@ with them:
 - **Use:** run a command with a secret supplied to it, or read a single field when the task really
   needs the value.
 - **Store:** create a secret, or generate one with a password that meets the policy, so a new
-  credential goes straight into the vault instead of into a file. A value that already exists on
+  credential goes straight into the vault instead of into a file. A value that doesn't fit its
+  type is refused with the reason, for example a choice field set to something that isn't one of
+  its allowed values, which names the field and the values it takes. A value that already exists on
   disk goes in with `sneakers-put`, which reads it from the file, so it never passes through the
   agent session or the shell history.
 - **Manage:** rename, move and retype secrets, organise folders, attach a secret to its target,
@@ -48,7 +50,7 @@ with them:
 The MCP server is a thin bridge. It holds no credentials of its own and no access logic: every
 tool call goes to the vault as the agent that made it, and the vault decides.
 
-## How it keeps them safe
+## 🛡️ How it keeps them safe
 
 ### Every agent has its own identity
 
@@ -100,11 +102,31 @@ An agent can't go past its scope by itself:
   you confirm the task once yourself.
 - Break-glass isn't reachable through the MCP, and only a human site admin can change the SSH host
   keys pinned to a target.
+- Some things stay with a person in the web admin by design: top-level folders, folder
+  permissions, connection profiles, shared targets, and the appliance's own settings (network,
+  updates, backups). An agent works inside the structure a person set up.
 
 A service account's reveals are never held for approval: its access rules are the limit. Give each
 unattended agent its own service account, with access only to the folders it needs.
 
-## Two ways to run it
+## 🚚 In practice: filling a new vault through the MCP
+
+The same tools that serve secrets can fill a vault. On a fresh appliance, a person sets up the
+structure in the web admin first: the top-level folders, the shared targets and the connection
+profiles. Then an agent, signed in once with a personal token and a second factor, creates each
+secret through the MCP, one at a time, in the folder and type the plan says. Every write lands in
+the audit trail as that agent, and the person never had to type a value.
+
+Two things to know before you do it this way:
+
+- **Values pass through the agent's session.** The agent reads each value from the old system and
+  writes it to the new one, so it sits in that session's transcript. That's acceptable on a
+  machine and transcript you control; otherwise use the [migration guide](../migration-guide.md)'s
+  import, which moves an encrypted bundle instead.
+- **Plan the structure first.** Writes need no approval, so a hundred creates take one sign-in,
+  and the agent files each secret exactly where its row says.
+
+## 🏠 Two ways to run it
 
 ### Self-hosted appliance
 
@@ -112,9 +134,9 @@ Run Sneakers-PAM yourself as a single-node appliance, built from a release the S
 has signed. Your vault, your keys and your audit trail stay on hardware you control. See
 [Getting started](../getting-started.md).
 
-:::info[Coming in v0.1.0]
+:::tip[Available now]
 
-The appliance images and the build kit that makes them.
+v0.1.0-rc.1 is out: the signed OVA and the update files are on the [download](/download) page.
 
 :::
 
@@ -129,7 +151,7 @@ A hosted option isn't offered yet.
 
 :::
 
-## Example: a Jarvis-style agent hub
+## 🤖 Example: a Jarvis-style agent hub
 
 Picture one person running a hub of agents: an operator agent that plans the work and hands it out,
 a few coding agents, each in its own workspace, and an infrastructure agent that looks after the
@@ -152,5 +174,5 @@ network.
 6. **Clean up fast.** If the infrastructure agent misbehaves, an admin revokes its service account
    token. The other agents carry on, and the audit trail shows exactly what that one agent did.
 
-See [Using the MCP](../user-guide/agents-and-the-mcp.md) for what to type to your assistant, and
-[Agents and the MCP](../user-guide/agents-and-the-mcp.md) for how it fits together.
+See [Agents and the MCP](../user-guide/agents-and-the-mcp.md) for how to connect an assistant, what
+to ask it, and how it fits together.
