@@ -60,6 +60,24 @@ A product update instead restarts the product in order and brings it back up pha
 (cluster, data, identity, services, front), staying on the maintenance screen until it answers on
 443 again. There's no automatic revert for a product update — see **Reverting** below.
 
+Only one apply or revert runs at a time. Starting a second one while one is already under way —
+another admin's apply, or the box's own automatic-update window landing while yours is still
+going — is refused with **UPGRADE_BUSY**; wait for the first to finish, then retry.
+
+## 🔁 Reinstalling the installed version {#reinstall}
+
+A reinstall re-applies the version already running, keeping its data — useful when a product slot
+is broken and there's no newer release to fix it with (Updates otherwise only offers newer
+versions to apply). An owner gets **Reinstall \<version\>** on the Product card once Check now
+reports the installed version as current; staging it works like staging any other bundle, and
+applying it is the usual product apply (quiesce, slot switch, k0s restart, phases, health) — the
+data stays, and the replaced copy is kept for **Revert**, same as any other product update.
+
+Over SSH, an owner runs the same thing with `sneakers reinstall`, which stages the installed
+version's bundle (fetching it from the update source first if it isn't already staged) and applies
+it in one step. The box's own update window never starts a reinstall by itself; it always waits for
+an owner to ask for one.
+
 ## ⏪ Reverting {#reverting}
 
 - **Base OS** reverts to the other slot — the release that was running before the update — either
