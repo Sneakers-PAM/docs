@@ -77,3 +77,11 @@
 .whyList li {
   margin-bottom: 0.6rem;
 }
+
+/* Light theme: the boxes stand off the white page by their edge and a soft
+   shadow, not by a tinted fill. */
+:global(html:not([data-theme='dark'])) .feature {
+  border: 1px solid #C9CED8;
+  border-top: 4px solid var(--sp-primary);
+  box-shadow: 0 2px 6px rgba(28, 34, 48, 0.08), 0 8px 24px rgba(28, 34, 48, 0.06);
+}
