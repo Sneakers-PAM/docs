@@ -133,25 +133,34 @@ function Story(): ReactNode {
       <div className="container">
         <Heading as="h2">Why it exists</Heading>
         <p>
-          Sneakers-PAM comes from years of running privileged access in two major hospitals and a
-          private healthcare organisation, from the seats of a CISO, a VP of infrastructure and a
-          CIO. At every one of them the most dangerous passwords were the ones nobody could find
-          quickly: shared admin passwords in spreadsheets and ticket comments, values pasted into
-          chat, and audit answers spread across three logs, if they lived anywhere.
+          Most privileged access tools were built for people at a desk, sold as a service and
+          priced per seat. Sneakers-PAM is built for how teams work now:
         </p>
+        <ul className={styles.whyList}>
+          <li>
+            🔐 <b>One place for every privileged credential,</b> behind the rules each folder
+            sets, instead of spreadsheets, ticket comments and chat.
+          </li>
+          <li>
+            ⚡ <b>One prompt per task.</b> It knows who's asking and what they've already proved,
+            so an outage doesn't turn into a stack of approvals. Nobody approves their own request.
+          </li>
+          <li>
+            🤖 <b>Agents as first-class users,</b> with their own tokens, using secrets without
+            holding them, and recorded as themselves.
+          </li>
+          <li>
+            🧾 <b>An audit trail nobody can quietly edit,</b> with every action in one hash-chained
+            log.
+          </li>
+          <li>
+            📦 <b>Yours to run,</b> on your own hypervisor, offline if you want, with every update
+            reversible.
+          </li>
+        </ul>
         <p>
-          The moment that sums it up: a system is down, people are waiting, and the tool holding
-          the one password that matters asks for an approval, then a second factor, then the second
-          factor again. By the third prompt nobody is thinking about the outage, only about the
-          shortcut they'll take next time. A control that costs that much attention stops being a
-          control.
-        </p>
-        <p>
-          So Sneakers-PAM is built around one idea: know who's asking and what they've already
-          proved, instead of asking again. Owners decide and nobody approves their own request, one
-          task gets one prompt, and every action lands in an audit trail nobody can quietly edit.
-          Privileged access has no organisation-specific core, so it's open source, for anyone who
-          needs it.
+          Privileged access has no organisation-specific core, so Sneakers-PAM is open source
+          under Apache-2.0, for anyone who needs it.
         </p>
       </div>
     </section>

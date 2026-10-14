@@ -19,7 +19,8 @@
 }
 
 .badge {
-  background: var(--ifm-color-emphasis-200);
+  background: var(--sp-bg);
+  border: 1px solid var(--sp-border-strong);
   border-radius: 999px;
   padding: 0.1rem 0.75rem;
   font-size: 0.8rem;
