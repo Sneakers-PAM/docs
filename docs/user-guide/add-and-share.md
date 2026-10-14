@@ -21,6 +21,15 @@ Anyone can keep secrets in their own personal folder. To add one to a shared fol
      read from the certificate.
 4. Save. The first version of the secret is recorded.
 
+:::note[Known limits in v0.1.0-rc.2]
+
+A field its type marks required can still be saved empty — a Web Password with no URL, say, or a
+Password with no username. Nothing stops the save yet, but a secret like that can show as
+incomplete and some of its type's own features (the heartbeat, a URL launch) may not work until
+the field's filled in. Fill in every field the editor marks, even where it doesn't yet insist.
+
+:::
+
 :::tip[Values that are already in a file]
 
 To store a value that's already on disk, such as a key file, without pasting it, use

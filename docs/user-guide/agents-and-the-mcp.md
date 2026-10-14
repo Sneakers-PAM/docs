@@ -128,6 +128,14 @@ go install github.com/Sneakers-PAM/sneakers-mcp/cmd/sneakers-put@latest
   person's second factor.
 - 📌 **No changing pinned SSH host keys.** Only a human site admin does that.
 
+:::note[Known limits in v0.1.0-rc.2]
+
+An assistant can make a subfolder of one it can already reach, but not a brand-new top-level
+folder — ask a site admin to make the top folder in the web app first, then the assistant can file
+secrets and subfolders under it.
+
+:::
+
 ## 💡 Good habits {#habits}
 
 - Prefer running a command with the secret over revealing it.

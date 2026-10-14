@@ -14,6 +14,16 @@ As soon as the box has an address (DHCP or SLAAC on its first linked network car
 done. If nothing comes within 30 seconds, the console shows the available network ports and lets
 you type an address, prefix, gateway and DNS server by hand.
 
+:::note[Known limits in v0.1.0-rc.2]
+
+There's no way to move the box off DHCP once it already has a lease — the console's manual-address
+editor only appears when DHCP didn't answer within the 30 seconds above, and `:8443`'s Network
+page (below) doesn't edit the address either, only the host name, DNS and the rest. Give the box a
+fixed lease through your DHCP server, or an IPAM reservation, until a later release adds a front
+end for setting a static address after first boot.
+
+:::
+
 ## 🔑 Protection {#protection}
 
 Chosen automatically from the hardware (a TPM or vTPM, and whether Secure Boot is enforced) — see
