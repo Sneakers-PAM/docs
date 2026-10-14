@@ -47,6 +47,26 @@ There's no rollback: if an import turns out wrong, fix whatever caused it and im
 **Re-import**, which empties the product's data first. A re-import replaces an earlier import; a
 box whose data didn't come from an import at all refuses it.
 
+## 🧮 Sizing a box for the import {#sizing}
+
+Each import step runs as its own job with a 4 GiB memory limit; a step whose limit is more than
+the box's free memory right then is refused up front, with a clear reason, instead of starting and
+being killed partway through. Measured against a 727,000-record audit chain (a 37 MB export
+bundle), peak memory per step ran from about 1.0 GiB (review) up to 2.6 GiB (verify), and the box
+itself uses about 1.3 GiB with the import open (the gateway and the web apps are held). All told,
+that install needed about 5.3 GiB free at the largest step's peak — a 16 GiB box had about 10.7 GiB
+to spare. The 4 GiB per-step limit leaves room for a chain of around 1.1 million records; a much
+larger install needs more memory on the box, not a bigger per-step limit.
+
+## ⚠️ A failed step, and closing mid-step {#step-failures}
+
+A step the box has to end for its own reasons — most often, the kernel killing it for memory — now
+shows why on the step's card, such as "the review step ran out of memory (limit 4Gi)", instead of
+sitting on "running" forever. **Close the import** is always available, even with a step still
+running: closing then asks you to confirm first ("This stops the running review step…"), ends that
+step, and closes as usual. There's no need to wait out or restart a stuck step just to get the box
+out of maintenance.
+
 ## 🧪 Rehearsing first {#rehearsal}
 
 If your tooling supports a rehearsal mode, run it before the real cutover: a rehearsal import, a
