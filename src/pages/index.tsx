@@ -201,9 +201,10 @@ function PreReleaseNotice(): ReactNode {
         <Heading as="h2">Pre-1.0 notice</Heading>
         <p>
           Sneakers-PAM is pre-1.0 and under active development. The services, the appliance and this
-          site are all being built in the open as a from-scratch, open-source PAM. Interfaces,
-          configuration and the install flow can still change before v0.1.0. Nothing here is ready
-          for production use yet — most pages below mark what's still coming.
+          site are all being built in the open as a from-scratch, open-source PAM. Two release
+          candidates, v0.1.0-rc.1 and v0.1.0-rc.2, are out, and it's already running in production
+          for real workloads — but interfaces, configuration and the install flow can still change
+          before v0.1.0 itself ships. Most pages below mark what's still coming.
         </p>
         <p>
           Follow along or get involved on <Link href="https://github.com/Sneakers-PAM">GitHub</Link>;
