@@ -109,6 +109,9 @@ export function normalizeReleases(repo, api) {
     if (!isDate(r.published_at)) fail(`${repo} ${r.tag_name}: no published date`);
     if (!isHttps(r.html_url)) fail(`${repo} ${r.tag_name}: no release link`);
     const assets = Array.isArray(r.assets) ? r.assets.map((a) => a?.name).filter((n) => typeof n === 'string') : [];
+    // An appliance release with no files yet is still being built (or its
+    // release run failed): it isn't a release anyone can take, so leave it out.
+    if (repo.endsWith('/sneakers-appliance') && assets.length === 0) continue;
     out.push({
       repo,
       tag: r.tag_name,

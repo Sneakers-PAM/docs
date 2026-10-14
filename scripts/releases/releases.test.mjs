@@ -10,6 +10,7 @@ import {
   DataError,
   inline,
   normalizeAdvisories,
+  normalizeReleases,
   parseNotes,
   unitsOf,
   validateData,
@@ -25,7 +26,8 @@ const release = (tag, extra = {}) => ({
   prerelease: tag.includes('-'),
   published_at: '2026-10-01T12:00:00Z',
   html_url: `https://github.com/${APPLIANCE}/releases/tag/${tag}`,
-  assets: [],
+  // A published appliance release carries its unit files.
+  assets: [{ name: `sneakers-appliance-baseOS-${tag.slice(1)}-amd64.bin` }],
   body: '',
   ...extra,
 });
@@ -168,4 +170,12 @@ test('rate limits and server errors count as unreachable; a 404 is bad data', as
 
 test('the checked-in data is valid', () => {
   validateData(JSON.parse(readFileSync(DATA_PATH, 'utf8')));
+});
+
+test('an appliance release with no files yet is left out', () => {
+  const api = [
+    { tag_name: 'v0.1.0-rc.2', prerelease: true, published_at: '2026-10-14T02:15:25Z', html_url: 'https://github.com/Sneakers-PAM/sneakers-appliance/releases/tag/v0.1.0-rc.2', assets: [], body: '' },
+    { tag_name: 'v0.1.0-rc.1', prerelease: true, published_at: '2026-10-13T03:22:32Z', html_url: 'https://github.com/Sneakers-PAM/sneakers-appliance/releases/tag/v0.1.0-rc.1', assets: [{ name: 'sneakers-appliance-baseOS-0.1.0-rc.1-amd64.bin' }], body: '' },
+  ];
+  assert.deepEqual(normalizeReleases(APPLIANCE, api).map((r) => r.tag), ['v0.1.0-rc.1']);
 });
