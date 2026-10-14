@@ -74,6 +74,40 @@ function Hero(): ReactNode {
   );
 }
 
+function WhyShort(): ReactNode {
+  return (
+    <section className={styles.notice}>
+      <div className="container">
+        <p className={styles.whyPitch}>
+          A privileged access manager you own outright: a signed appliance you can roll back,
+          built so AI agents can use a credential without ever holding a copy.
+        </p>
+        <div className="row">
+          <div className="col col--6">
+            <Heading as="h3">🤖 Agents first</Heading>
+            <p>
+              An agent signs in with its own token, never a person's password, and can use a
+              secret without ever seeing it. Every tool call is audited to the token that made
+              it; revoke one and the rest keep working. Agents can't break the glass.
+            </p>
+          </div>
+          <div className="col col--6">
+            <Heading as="h3">🏠 You own it</Heading>
+            <p>
+              One signed appliance, on your own hypervisor — no cloud account to open. Run it
+              fully offline, carrying signed update files in by hand, and every unit has its own
+              way back.
+            </p>
+          </div>
+        </div>
+        <p>
+          <Link to="/docs/why">Why Sneakers-PAM →</Link>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Features(): ReactNode {
   return (
     <section className={styles.features}>
@@ -167,6 +201,7 @@ export default function Home(): ReactNode {
     <Layout title="Home" description={siteConfig.tagline}>
       <Hero />
       <main>
+        <WhyShort />
         <Features />
         <Story />
         <UseCase />

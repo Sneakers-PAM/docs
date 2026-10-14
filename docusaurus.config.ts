@@ -90,6 +90,7 @@ const config: Config = {
         srcDark: 'img/mark-dark.svg',
       },
       items: [
+        {to: '/docs/why', label: 'Why Sneakers-PAM', position: 'left'},
         {to: '/download', label: 'Download', position: 'left'},
         {to: '/docs/getting-started', label: 'Getting started', position: 'left'},
         {to: '/docs/admin-guide', label: 'Admin guide', position: 'left', activeBasePath: '/docs/admin-guide'},
