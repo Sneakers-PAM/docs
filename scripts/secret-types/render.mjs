@@ -230,6 +230,11 @@ target as unreachable, and there is no database adapter yet. Each type's page sa
 | Choice | One of a fixed list of options. |
 | Yes or no | A flag. |
 
+A **Choice** field only takes one of its type's own options: creating or editing a secret with
+anything else is refused, naming the field and listing the options to pick from. A value stored
+before this was enforced still reads back as it was; the next save on that field has to pick a
+valid option.
+
 ## 🔐 Secret and super-sensitive fields {#sensitivity}
 
 - **Sensitive fields** are masked everywhere. Revealing or copying one is a deliberate act, written

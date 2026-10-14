@@ -74,6 +74,10 @@ a secret to its target, check a stored credential against its target, and turn r
 heartbeat on or off for a secret, all within your access. A secret that names you goes into your
 personal folder unless you ask for another.
 
+A field that only takes one of a fixed set of choices — a key's format, say, or a database
+engine — is listed in the assistant's own tool description, so it picks one of the type's actual
+options rather than guessing; anything else is refused, naming the field and the allowed values.
+
 ## 🏃 sneakers-run {#sneakers-run}
 
 `sneakers-run` runs one command with one secret field handed to it, so the value never passes
