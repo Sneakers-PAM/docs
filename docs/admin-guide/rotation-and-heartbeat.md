@@ -25,3 +25,13 @@ and a secret with no target attached is marked as not rotating, with a prompt to
 
 Rotation and heartbeat work together: after a rotation, the next heartbeat confirms the new value
 actually took.
+
+:::note[Known limits in v0.1.0-rc.2]
+
+A new secret's heartbeat starts on as soon as the secret is created, even before its target is
+reachable and, for SSH, its host key is pinned — so the first checks report Unreachable or Drift
+right away, and keep reporting it on every run until the target's actually ready or you switch the
+heartbeat off by hand. A later release will start heartbeat off until the target is ready, then
+offer to switch it on.
+
+:::
