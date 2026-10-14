@@ -9,6 +9,7 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         {type: 'link', label: 'Home', href: '/'},
+        {type: 'doc', id: 'why', label: 'Why Sneakers-PAM'},
         {type: 'doc', id: 'index', label: 'Documentation'},
         {type: 'doc', id: 'getting-started', label: 'Getting started'},
       ],
