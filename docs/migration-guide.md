@@ -5,7 +5,7 @@ description: Moving an existing Sneakers install's users, secrets and folders on
 
 # 🚚 Migration guide
 
-This guide is for moving an **existing** Sneakers-PAM (or legacy Sneakers) install's data — users,
+This guide is for moving an **existing** Sneakers-PAM install's data — users,
 groups, secrets, folders and the audit chain — onto a fresh box or cluster, through the `:8443`
 Import page. It assumes you already have [a box set up](./appliance-guide/first-setup.md) but
 haven't run the product's own first-run setup yet.
