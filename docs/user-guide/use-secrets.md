@@ -62,6 +62,18 @@ Every reveal you make on one visit to the page belongs to one task, so they're d
   or, if it really can't wait, [break the glass](./break-glass.md).
 - **Retired, restore to reveal:** the secret was retired. Someone who manages it can restore it.
 
+## 🧩 When a field is missing {#missing}
+
+A secret created through the API or an MCP tool can be stored without a value for a field its
+type marks required — a password never set, say. That field opens normally, not as an error: it
+shows **Missing required field**, with an **Edit** button that goes straight to it so it can be
+filled in. The secret otherwise reads, reveals and rotates as any other.
+
+If a secret doesn't open at all, the page says so plainly: "This secret doesn't exist, or you
+don't have access to it," with its id. That's never the same as a missing field, and it's never
+read as deleted — ask whoever manages the folder for access, or check the id against where you
+got the link.
+
 ## 💻 Open an SSH terminal in the browser {#terminal}
 
 For an [SSH Key](../admin-guide/secret-types/ssh-key.md) secret with a target, the secret's
