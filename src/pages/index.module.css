@@ -60,3 +60,10 @@
   font-weight: 600;
   margin-bottom: 2rem;
 }
+
+.featureIcon {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}

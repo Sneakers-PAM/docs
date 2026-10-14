@@ -8,37 +8,44 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 type Feature = {
+  icon: string;
   title: string;
   details: string;
 };
 
 const features: Feature[] = [
   {
+    icon: '🗄️',
     title: 'One place for secrets',
     details:
       'Credentials live in folders with their own access rules, never scattered across config files or chat threads.',
   },
   {
+    icon: '✅',
     title: 'Approvals, not blanket access',
     details:
       'Reveals, check-outs and break-glass access can all require a reason and, where set up, a second approver.',
   },
   {
+    icon: '🔄',
     title: 'Rotation you can trust',
     details:
       'A heartbeat checks that a target still matches what the vault holds, and rotation runs on a schedule or on demand.',
   },
   {
+    icon: '🔗',
     title: "An audit trail that can't be quietly edited",
     details:
       'Every action is recorded in a hash-chained log; a changed, deleted or reordered record is detectable.',
   },
   {
+    icon: '🤖',
     title: 'Built for agents too',
     details:
       'An MCP server lets coding agents and other tools use secrets through the same approvals and audit trail as a person would.',
   },
   {
+    icon: '📦',
     title: 'Run it yourself',
     details:
       'Sneakers-PAM ships as a signed, single-node appliance you build from an org-signed release — no hosted service required.',
@@ -113,9 +120,12 @@ function Features(): ReactNode {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {features.map(({title, details}) => (
+          {features.map(({icon, title, details}) => (
             <div key={title} className={clsx('col col--4', styles.featureCol)}>
               <div className={styles.feature}>
+                <span className={styles.featureIcon} aria-hidden="true">
+                  {icon}
+                </span>
                 <Heading as="h3">{title}</Heading>
                 <p>{details}</p>
               </div>
