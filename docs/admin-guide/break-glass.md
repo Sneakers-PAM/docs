@@ -17,6 +17,11 @@ Break-glass access is treated as a high-severity event everywhere in the product
 Because it trades a normal approval step for speed, break-glass use is exactly the kind of record
 a post-incident review should look at first.
 
+Break-glass is for a person in their own signed-in web session, enforced by the server: a personal
+token, a service account or any other caller with no web session of their own is refused before
+identity or the vault is even asked. That includes agents and the MCP — see [What an agent can't
+do](../user-guide/agents-and-the-mcp.md#limits).
+
 ## Break-the-glass mode for site admins
 
 A site admin can't see other people's personal folders in the normal app. When an emergency needs
