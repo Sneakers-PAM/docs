@@ -1,15 +1,15 @@
 {
   "releases": [
     {
-      "repo": "Sneakers-PAM/sneakers-appliance",
+      "repo": "Sneakers-PAM/sneakers-release",
       "tag": "v0.1.0-rc.2",
       "name": "v0.1.0-rc.2",
       "channel": "rc",
-      "publishedAt": "2026-10-13T23:31:52.000Z",
-      "url": "https://github.com/Sneakers-PAM/sneakers-appliance/releases/tag/v0.1.0-rc.2",
+      "publishedAt": "2026-10-14T02:17:44.000Z",
+      "url": "https://github.com/Sneakers-PAM/sneakers-release/releases/tag/v0.1.0-rc.2",
       "units": [
         {
-          "unit": "baseOS",
+          "unit": "product",
           "version": "0.1.0-rc.2"
         }
       ],
@@ -28,7 +28,7 @@
           "inline": [
             {
               "t": "text",
-              "v": "🐛 Bug Fixes"
+              "v": "🧩 Dependency Updates"
             }
           ]
         },
@@ -38,7 +38,16 @@
             [
               {
                 "t": "text",
-                "v": "fix(import): size the step Jobs, end failed steps with a reason, and gate a 727k-record import @Bugs5382 (#421)"
+                "v": "chore(deps): bump the callee proto pins @[github-actions[bot]]("
+              },
+              {
+                "t": "link",
+                "v": "https://github.com/apps/github-actions",
+                "href": "https://github.com/apps/github-actions"
+              },
+              {
+                "t": "text",
+                "v": ") (#120)"
               }
             ]
           ]
@@ -65,8 +74,8 @@
             },
             {
               "t": "link",
-              "v": "https://github.com/Sneakers-PAM/sneakers-appliance/compare/v0.1.0-rc.1...v0.1.0-rc.2",
-              "href": "https://github.com/Sneakers-PAM/sneakers-appliance/compare/v0.1.0-rc.1...v0.1.0-rc.2"
+              "v": "https://github.com/Sneakers-PAM/sneakers-release/compare/v0.1.0-rc.1...v0.1.0-rc.2",
+              "href": "https://github.com/Sneakers-PAM/sneakers-release/compare/v0.1.0-rc.1...v0.1.0-rc.2"
             }
           ]
         }
