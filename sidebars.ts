@@ -37,6 +37,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {type: 'doc', id: 'admin-guide/index', label: 'Overview'},
         {type: 'doc', id: 'admin-guide/folders-and-permissions', label: 'Folders and permissions'},
+        {type: 'doc', id: 'admin-guide/users-groups-and-service-accounts', label: 'Users, groups and service accounts'},
         {type: 'doc', id: 'admin-guide/secret-types/index', label: 'Secret types'},
         {type: 'doc', id: 'admin-guide/targets-and-connections', label: 'Targets and connections'},
         {type: 'doc', id: 'admin-guide/rotation-and-heartbeat', label: 'Heartbeat and rotation'},

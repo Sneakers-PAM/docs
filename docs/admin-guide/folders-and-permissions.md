@@ -25,9 +25,10 @@ time — see [Approvals and requests](./approval-policy.md) for how a reveal get
 ## 🧱 Who can do what on a folder {#rules}
 
 A folder's rule set works like a small firewall: each rule names who it's for (a person, a
-directory group, or everyone) and what it grants — read and reveal, author (create and edit),
-approve, or just stay informed. Rules are checked on the target first, if the secret has one, then
-up the chain of folders, so a more specific rule can narrow or widen what a broader one gives.
+[group](./users-groups-and-service-accounts.md#groups), or everyone) and what it grants — read
+and reveal, author (create and edit), approve, or just stay informed. Rules are checked on the
+target first, if the secret has one, then up the chain of folders, so a more specific rule can
+narrow or widen what a broader one gives.
 
 | Grant | What it lets someone do |
 |---|---|

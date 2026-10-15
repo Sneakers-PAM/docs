@@ -24,9 +24,11 @@ Anyone can keep secrets in their own personal folder. To add one to a shared fol
 :::note[Known limits in v0.1.0-rc.2]
 
 A field its type marks required can still be saved empty — a Web Password with no URL, say, or a
-Password with no username. Nothing stops the save yet, but a secret like that can show as
-incomplete and some of its type's own features (the heartbeat, a URL launch) may not work until
-the field's filled in. Fill in every field the editor marks, even where it doesn't yet insist.
+Password with no username. Nothing stops the save yet, and some of its type's own features (the
+heartbeat, a URL launch) may not work until the field's filled in. Fill in every field the editor
+marks, even where it doesn't yet insist. The explicit **Missing required field** mark on the open
+secret is from v0.1.0-rc.3 ([Use a secret](./use-secrets.md#missing)); at rc.2 the field just opens
+blank, with nothing calling out that it's required.
 
 :::
 

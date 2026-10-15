@@ -13,6 +13,8 @@ guide](../user-guide/index.md) if you need the basics of signing in and using a 
 
 - 📁 **[Folders and permissions](./folders-and-permissions.md):** how secrets and folders fit
   together, and who can see, reveal, approve or just hear about each one.
+- 👥 **[Users, groups and service accounts](./users-groups-and-service-accounts.md):** adding a
+  person, grouping people for sharing, and giving an automated job its own account and tokens.
 - 🧩 **[Secret types](./secret-types/index.md):** every built-in type, its fields, and which of
   them support a heartbeat, rotation or check-out.
 - 🔌 **[Targets and connections](./targets-and-connections.md):** linking a secret to the system
