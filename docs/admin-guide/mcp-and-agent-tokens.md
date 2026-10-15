@@ -24,6 +24,14 @@ read, unless the secret is set to need one, and then an owner or approver decide
 After `/login` there's no further second-factor prompt for the agent. Where possible, prefer
 a tool that runs a command with a secret injected over one that hands back the raw value.
 
+## Where tokens come from
+
+A person connects their own assistant and manages their tokens from **My tokens** — see
+[Agents and the MCP](../user-guide/agents-and-the-mcp.md#connect). For a job that isn't a person
+(a nightly pipeline, say), a site admin creates a [service
+account](./users-groups-and-service-accounts.md#service-accounts) and mints it a token scoped to
+one or more groups instead of handing it someone's personal token.
+
 See [Using the MCP](../user-guide/agents-and-the-mcp.md) for a plain, prompt-by-prompt guide to working with it,
 [Use case: a vault for AI agents](../use-cases/agent-vault.md) for how a hub of agents keeps its
 credentials out of its workspaces, and [Security](../security.md) for how to report a problem with

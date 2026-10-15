@@ -64,12 +64,14 @@ A root operator can open a one-off root shell for troubleshooting, through a two
 
    ![The Root shell page, which explains the challenge and response for break-glass access.](/img/guides/root-shell-01-page.png)
 
-3. Type the code back into the SSH session (not echoed). It's bound to that login and works once;
-   three wrong tries closes it.
+3. Type the code back into the SSH session (not echoed). It's bound to that login and works once,
+   and gives a one-minute ticket to actually start the shell. Three wrong codes close the
+   challenge, and count toward your account's lockout the same as a wrong sign-in.
 
-The root shell is busybox ash, ends after the policy's time limit or 10 minutes idle, and is fully
-audited. With a product installed, `kubectl`, `helm` and `k0s` work against it with no setup —
-busybox's limited tool set is covered in [Troubleshooting](./troubleshooting.md#busybox).
+The root shell is busybox ash, and is fully audited. It ends at whichever comes first: the
+policy's time limit, 10 minutes idle, your SSH client going away, or an owner ending it from the
+Sessions page. With a product installed, `kubectl`, `helm` and `k0s` work against it with no
+setup — busybox's limited tool set is covered in [Troubleshooting](./troubleshooting.md#busybox).
 
 ## 🤖 The MCP switch {#mcp}
 
