@@ -55,6 +55,7 @@ const sidebars: SidebarsConfig = {
         {type: 'doc', id: 'appliance-guide/index', label: 'Overview'},
         {type: 'doc', id: 'appliance-guide/install', label: 'Install'},
         {type: 'doc', id: 'appliance-guide/first-setup', label: 'First setup'},
+        {type: 'doc', id: 'appliance-guide/email', label: 'Email'},
         {type: 'doc', id: 'appliance-guide/protection', label: 'Protection levels'},
         {type: 'doc', id: 'appliance-guide/updates', label: 'Updates and channels'},
         {type: 'doc', id: 'appliance-guide/backups-and-restore', label: 'Backups and restore'},
