@@ -31,6 +31,14 @@ app and choose **Scan and pin…**, compare the fingerprint shown against the on
 the box itself, and confirm. This protects the target too: without a pin, a repeated probe from
 the connector could otherwise trip the target's own rate limiting.
 
+Confirming doesn't pin the fingerprint you saw on screen — it pins whatever the target offers at
+that exact moment, and only if that still matches. **Scan and pin…** scans the target a second
+time when you confirm, and refuses with "the target now offers a different host key; scan it
+again" if the key changed between the scan and the confirm, pinning nothing. This is also what you
+see after a real key change (the box was reinstalled, or its host key was rotated): scan again,
+check the new fingerprint against the box itself, and confirm it to replace the old pin. A target
+can hold more than one pin at once (for a planned rollover, say); any of them is accepted.
+
 ## 🧮 What each protocol can do {#protocols}
 
 The connection's protocol decides which adapter runs, and what it can actually do against the

@@ -64,6 +64,8 @@ Every reveal you make on one visit to the page belongs to one task, so they're d
 
 ## 🧩 When a field is missing {#missing}
 
+*From v0.1.0-rc.3.*
+
 A secret created through the API or an MCP tool can be stored without a value for a field its
 type marks required — a password never set, say. That field opens normally, not as an error: it
 shows **Missing required field**, with an **Edit** button that goes straight to it so it can be
@@ -76,11 +78,14 @@ got the link.
 
 ## 💻 Open an SSH terminal in the browser {#terminal}
 
-For an [SSH Key](../admin-guide/secret-types/ssh-key.md) or a
-[Password Account (SSH)](../admin-guide/secret-types/unix-ssh.md) secret with a target, the
-secret's **Actions** menu offers **Open terminal**. You get an SSH session to the target in the
-browser, signed in with the stored key or password. The credential never reaches your browser,
-and the session's start and end are audited with which of the two signed it in.
+For an [SSH Key](../admin-guide/secret-types/ssh-key.md) secret with a target, the secret's
+**Actions** menu offers **Open terminal**. You get an SSH session to the target in the browser,
+signed in with the stored key. The credential never reaches your browser, and the session's start
+and end are audited.
+
+*From v0.1.0-rc.3: a [Password Account (SSH)](../admin-guide/secret-types/unix-ssh.md) secret
+offers **Open terminal** too, signed in with the stored password instead of a key; the session
+audit then records which of the two signed it in.*
 
 The terminal works whichever way you opened Sneakers-PAM — a host name, an IPv4 address or an
 IPv6 address — it connects back on that same address, so there's nothing extra to set up for a

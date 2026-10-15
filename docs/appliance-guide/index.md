@@ -18,6 +18,8 @@ appliance admin page never shows a secret.
   own image from a signed release with `sneakers-kit`.
 - 🔧 **[First setup](./first-setup.md):** the console's setup code, the `:8443` admin page, the
   first appliance admin, the recovery keys, and installing and setting up the product itself.
+- 📧 **[Email](./email.md):** the mail relay Sneakers-PAM sends through, its TLS and
+  authentication settings, sending a test, and what to do when the test fails.
 - 🔐 **[Protection levels](./protection.md):** full vs reduced protection, the TPM and key-file
   custody modes, and Secure Boot.
 - 🔄 **[Updates and channels](./updates.md):** the three update units, the rc and stable channels,
