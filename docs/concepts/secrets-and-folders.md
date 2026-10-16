@@ -46,3 +46,9 @@ can be allowed to create and update secrets in a folder, but reveal only the one
 itself — never the folder's other secrets. That's meant for a machine that manages its own
 credentials (a host storing its own local-admin password, say) without being handed read access to
 everything else nearby.
+
+An admin sets this from the folder's access screen (admin app, Folders → the folder → Sharing),
+Advanced view: clicking a subject's Reveal cell cycles blank, allow, **own**, deny, blank, so own
+sits between the plain allow and deny it narrows. A secret's own page shows which principal created
+it, so an admin checking this grant can see at a glance whose secrets a given own-reveal subject
+can actually reveal.
