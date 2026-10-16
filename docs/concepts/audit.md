@@ -14,6 +14,12 @@ Records come in two tiers:
 - **Activity** — everything else worth keeping a history of, such as a request being opened or
   denied, shown with a lighter, dashed marker.
 
+A routine, unchanged-result machine check (a heartbeat that still comes back fine) isn't written
+one record at a time: it folds into a running daily summary for that secret, flushed as one record
+at the first state change or when the day closes. A failure, a host-key refusal and every
+person or agent action still get their own record, exactly as before — only the noise of a
+healthy check running every few minutes is rolled up.
+
 The trail records metadata about actions, never secret material itself — see
 [Secrets and folders](./secrets-and-folders.md) for where the values themselves live, and
 [Break-glass](./break-glass.md) for why that path in particular always lands at the audit

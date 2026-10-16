@@ -16,6 +16,13 @@ one of a small set of states:
 A drifting or unreachable secret is a signal something changed outside Sneakers-PAM — worth
 looking into even before the next scheduled rotation.
 
+A new secret of a heartbeat-capable type starts with its heartbeat **off** until it's actually
+ready to check: it needs a target with a connection, and — for an SSH key — a host key pinned on
+that target (see [Secrets and folders](./secrets-and-folders.md#ssh-host-keys)). Once that's in
+place, switch heartbeat on from the secret's page; asking before then is refused, naming what's
+still missing, rather than leaving it failing a check every few minutes against a target that was
+never reachable in the first place.
+
 ## Rotation
 
 **Rotation** changes a secret's value on the target and records the new value, either on a
