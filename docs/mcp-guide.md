@@ -57,6 +57,22 @@ the task once in your browser. See [who approves what](./concepts/approvals.md#w
 This is often the safest way to use a secret with an assistant. The password gets used behind the
 scenes, and you never actually see it typed out anywhere.
 
+### Rotate a credential it manages
+
+> "Rotate the local admin password for host-a and set it there."
+
+For a secret the assistant is allowed to create and update (not just read), it can generate a
+fresh value, store it, and hand it back once so it can be set on the system. If setting it there
+fails partway, ask it to put the previous value back — that's a new version, never a rewrite of
+what came before.
+
+### Attach a secret to another system
+
+> "This SSH key also needs to work on host-b — attach it there too."
+
+One secret can be attached to more than one target. Attaching or detaching one never disturbs the
+others already attached.
+
 ## A few things to keep in mind
 
 - **The assistant follows the same rules you do.** It can't see or do anything you aren't allowed

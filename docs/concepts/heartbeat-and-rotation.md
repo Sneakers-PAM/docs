@@ -32,3 +32,8 @@ and a secret with no target attached is marked as not rotating, with a prompt to
 
 Rotation and heartbeat work together: after a rotation, the next heartbeat confirms the new value
 actually took.
+
+For a secret attached to more than one target, both checks run per target and report per target:
+rotation isn't "done" until every target has the new value, and a page showing the secret lists
+which targets are still behind. Rolling a value already stored back to an earlier one never
+rewrites history; it's recorded as a new version, like any other change.
