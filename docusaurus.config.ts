@@ -17,12 +17,12 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://sneakers-pam.github.io',
-  baseUrl: '/website/',
+  url: 'https://docs.sneakers-pam.com',
+  baseUrl: '/',
   trailingSlash: false,
 
   organizationName: 'Sneakers-PAM',
-  projectName: 'website',
+  projectName: 'docs',
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
@@ -54,7 +54,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/Sneakers-PAM/website/edit/main/',
+          editUrl: 'https://github.com/Sneakers-PAM/docs/edit/main/',
           showLastUpdateTime: true,
           includeCurrentVersion: includeNext,
         },
