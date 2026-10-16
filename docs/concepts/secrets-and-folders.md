@@ -21,6 +21,13 @@ attached to, with no copies to keep in sync; attaching or detaching one target n
 others. That link is what makes [heartbeat and rotation](./heartbeat-and-rotation.md) possible:
 Sneakers-PAM can check the secret against each of its targets, and change them together.
 
+A secret's own page lists its attached targets, with an **Attach** picker for adding another and a
+**Detach** button next to each one already there. Opening a terminal on an SSH Key or Password
+Account (SSH) secret goes straight to the only target when it has just one; with more than one
+attached, a short picker asks which to open the session on before it connects. A target's own page,
+in turn, lists every secret attached to it — useful for seeing at a glance what else shares a
+host's credential before changing or deleting the target.
+
 ### SSH host keys
 
 A target reached over SSH carries its own pinned host keys — the public keys that identify the
@@ -39,3 +46,9 @@ can be allowed to create and update secrets in a folder, but reveal only the one
 itself — never the folder's other secrets. That's meant for a machine that manages its own
 credentials (a host storing its own local-admin password, say) without being handed read access to
 everything else nearby.
+
+An admin sets this from the folder's access screen (admin app, Folders → the folder → Sharing),
+Advanced view: clicking a subject's Reveal cell cycles blank, allow, **own**, deny, blank, so own
+sits between the plain allow and deny it narrows. A secret's own page shows which principal created
+it, so an admin checking this grant can see at a glance whose secrets a given own-reveal subject
+can actually reveal.
