@@ -53,7 +53,7 @@ function Hero(): ReactNode {
         <Heading as="h1" className={styles.heroName}>
           {siteConfig.title}
         </Heading>
-        <p className={styles.heroText}>Privileged access, kept on a short leash.</p>
+        <p className={styles.heroText}>Privileged access, kept on a short leash&trade;.</p>
         <p className={styles.heroTagline}>
           An open-source, Apache-2.0 privileged access management system — a vault for credentials,
           scoped secret delivery, and an audit trail for every access.
