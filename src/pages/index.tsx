@@ -4,121 +4,53 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import {SplitHero} from '@site/src/components/SplitHero';
 
 import styles from './index.module.css';
 
-type Feature = {
+type EntryPoint = {
   title: string;
   details: string;
+  to: string;
 };
 
-const features: Feature[] = [
+const entryPoints: EntryPoint[] = [
   {
-    title: 'One place for secrets',
-    details:
-      'Credentials live in folders with their own access rules, never scattered across config files or chat threads.',
+    title: 'User guide',
+    details: 'Sign in, find and use a secret, check out, ask for access, break the glass.',
+    to: '/docs/user-guide',
   },
   {
-    title: 'Approvals, not blanket access',
-    details:
-      'Reveals, check-outs and break-glass access can all require a reason and, where set up, a second approver.',
+    title: 'Admin guide',
+    details: 'Folders and permissions, secret types, targets, rotation, approvals, audit.',
+    to: '/docs/admin-guide',
   },
   {
-    title: 'Rotation you can trust',
-    details:
-      'A heartbeat checks that a target still matches what the vault holds, and rotation runs on a schedule or on demand.',
+    title: 'Appliance guide',
+    details: 'Install, first setup, protection levels, updates, backups, the console.',
+    to: '/docs/appliance-guide',
   },
   {
-    title: "An audit trail that can't be quietly edited",
-    details:
-      'Every action is recorded in a hash-chained log; a changed, deleted or reordered record is detectable.',
-  },
-  {
-    title: 'Built for agents too',
-    details:
-      'An MCP server lets coding agents and other tools use secrets through the same approvals and audit trail as a person would.',
-  },
-  {
-    title: 'Run it yourself',
-    details:
-      'Sneakers-PAM ships as a signed, single-node appliance you build from an org-signed release — no hosted service required.',
+    title: 'Migration guide',
+    details: 'Move an existing Sneakers-PAM install, step by step, with the lessons learned.',
+    to: '/docs/migration-guide',
   },
 ];
 
-function Hero(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={styles.hero}>
-      <div className="container">
-        <Heading as="h1" className={styles.heroName}>
-          {siteConfig.title}
-        </Heading>
-        <p className={styles.heroText}>Privileged access, kept on a short leash.</p>
-        <p className={styles.heroTagline}>
-          An open-source, Apache-2.0 privileged access management system — a vault for credentials,
-          scoped secret delivery, and an audit trail for every access.
-        </p>
-        <div className={styles.actions}>
-          <Link className="button button--primary button--lg" to="/docs/getting-started">
-            Getting started
-          </Link>
-          <Link className="button button--secondary button--lg" to="/docs/concepts">
-            Concepts
-          </Link>
-          <Link className="button button--secondary button--lg" href="https://github.com/Sneakers-PAM">
-            View on GitHub
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function Features(): ReactNode {
+function EntryPoints(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {features.map(({title, details}) => (
-            <div key={title} className={clsx('col col--4', styles.featureCol)}>
-              <div className={styles.feature}>
+          {entryPoints.map(({title, details, to}) => (
+            <div key={title} className={clsx('col col--3', styles.featureCol)}>
+              <Link to={to} className={styles.feature}>
                 <Heading as="h3">{title}</Heading>
                 <p>{details}</p>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function Story(): ReactNode {
-  return (
-    <section className={styles.notice}>
-      <div className="container">
-        <Heading as="h2">Why it exists</Heading>
-        <p>
-          Sneakers-PAM comes from years of running privileged access in two major hospitals and a
-          private healthcare organisation, from the seats of a CISO, a VP of infrastructure and a
-          CIO. At every one of them the most dangerous passwords were the ones nobody could find
-          quickly: shared admin passwords in spreadsheets and ticket comments, values pasted into
-          chat, and audit answers spread across three logs, if they lived anywhere.
-        </p>
-        <p>
-          The moment that sums it up: a system is down, people are waiting, and the tool holding
-          the one password that matters asks for an approval, then a second factor, then the second
-          factor again. By the third prompt nobody is thinking about the outage, only about the
-          shortcut they'll take next time. A control that costs that much attention stops being a
-          control.
-        </p>
-        <p>
-          So Sneakers-PAM is built around one idea: know who's asking and what they've already
-          proved, instead of asking again. Owners decide and nobody approves their own request, one
-          task gets one prompt, and every action lands in an audit trail nobody can quietly edit.
-          Privileged access has no organisation-specific core, so it's open source, for anyone who
-          needs it.
-        </p>
       </div>
     </section>
   );
@@ -147,11 +79,30 @@ function PreReleaseNotice(): ReactNode {
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout title="Home" description={siteConfig.tagline}>
-      <Hero />
+    <Layout title="Documentation" description={siteConfig.tagline}>
+      <SplitHero
+        eyebrow="Documentation"
+        headline="Everything you need to"
+        headlineAccent="run Sneakers-PAM"
+        lede={
+          <>
+            Guides for the three people who meet it: the <mark>people who use it</mark> every day,
+            the <mark>admins who run it</mark>, and the <mark>admins who look after the appliance</mark>{' '}
+            it ships on.
+          </>
+        }
+        primaryCta={{label: 'Get started', to: '/docs/getting-started'}}
+        secondaryCta={{label: 'Why Sneakers-PAM', to: '/docs/why'}}
+        terminalTitle="sneakers-run"
+        terminalLines={[
+          {prompt: 'sneakers-run -secret prod/db-primary -- psql'},
+          {text: 'you can read this secret — no approval needed'},
+          {text: 'connecting to db-primary.example.org ...'},
+          {text: 'logged: check-out by you, 08:14:02'},
+        ]}
+      />
       <main>
-        <Features />
-        <Story />
+        <EntryPoints />
         <PreReleaseNotice />
       </main>
     </Layout>

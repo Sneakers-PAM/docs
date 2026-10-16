@@ -19,11 +19,14 @@ jobs:
     if: github.event.pull_request.draft != true
     uses: Sneakers-PAM/.github/.github/workflows/scrub.yml@main
     with:
-      # The site's own Pages domain, the fonts' license site, and the npm
-      # funding links baked into package-lock.json.
+      # The site's own Pages domain, the fonts' license site, the npm
+      # funding links baked into package-lock.json, and docusign.com (a
+      # built-in secret type's default field value, from the vault's own
+      # catalogue; see sneakers-vault's checks.yml for the same entry).
       allowed-domains: >-
         sneakers-pam.github.io openfontlicense.org opencollective.com tidelift.com
         paulmillr.com ko-fi.com liberapay.com patreon.com feross.org
+        docusign.com
 
   build:
     name: 🧪 Build & Test

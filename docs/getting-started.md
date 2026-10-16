@@ -1,67 +1,60 @@
-# Getting started
+---
+title: Getting started
+description: From nothing to a running Sneakers-PAM with its first admin, on the appliance or on your own Kubernetes.
+---
 
-Sneakers-PAM doesn't ship install media. Instead, each user builds their own appliance image
-from a release the Sneakers-PAM org has signed — the build kit checks that signature and refuses
-anything unsigned or modified. This keeps the chain of trust in the open: you can see exactly what
-you're running, and you're never trusting a binary someone else built for you.
+# 🚀 Getting started
 
-## What you'll end up with
+Sneakers-PAM runs one of two ways. Pick one, follow its steps, then hand people the
+[User guide](./user-guide/index.md).
 
-A single-node appliance running the vault, identity, workflow, audit and related services, on a
-pinned, signed release.
+| | The appliance (recommended) | Helm on your own Kubernetes |
+|---|---|---|
+| What you get | A signed, single-node operating system that runs Sneakers-PAM on k0s, with the `:8443` admin page, the console and the closed shell | The same services from the same pinned release, as Helm charts |
+| Updates | Signed update packages, staged and applied from `:8443`, with an automatic fallback to the previous release | `helm upgrade`, when you run it |
+| You look after | The box's network, certificates, updates and recovery keys | The cluster, the ingress, TLS, PostgreSQL and the backups |
+| Guide | [Appliance admin guide](./appliance-guide/index.md) | [Kubernetes with Helm](./kubernetes-helm.md) |
 
-:::info[Coming in v0.1.0]
+:::warning[Pre-1.0]
 
-The ISO, OVA and AMI image formats, the closed admin shell and `:8443` OS admin
-page for setup, backups and upgrades, and scheduled automatic updates applied in a maintenance
-window you control.
-
-:::
-
-## Before you start
-
-- A signed release from `sneakers-release` (the pinned manifest and chart set).
-- The `sneakers-appliance` build kit, which turns that release into a bootable image.
-- A target to run it on: a hypervisor for an OVA, a USB drive or virtual media for an ISO, or an
-  AWS account for an AMI.
-
-## Build your image
-
-:::info[Coming in v0.1.0]
-
-The build kit and its exact command-line flow aren't published yet — this
-section will walk through choosing an image format, pointing the kit at a signed release, and
-verifying the signature before the image is built.
+Sneakers-PAM is before its first stable release. Any release can still change how it installs,
+updates or stores data, and there is no upgrade path promised between pre-releases. Try it in a
+lab first.
 
 :::
 
-## Install
+## 📦 On the appliance {#appliance}
 
-:::info[Coming in v0.1.0]
+1. **Get the image.** Each appliance release on
+   [GitHub Releases](https://github.com/Sneakers-PAM/sneakers-appliance/releases) carries the OVA
+   for VMware, `sneakers-appliance-<version>-amd64.ova`, with its SHA-256 and its signature by the
+   project's release key. You can also build your own image from the signed release with
+   `sneakers-kit` ([Install](./appliance-guide/install.md#build-your-own)).
+2. **Check it.** Verify the checksum and the signature before you import it
+   ([how](./appliance-guide/install.md#verify)).
+3. **Import and boot it.** On VMware, clear the VM's Secure Boot keys before the first power-on so
+   the box can enrol its own ([Install](./appliance-guide/install.md#vmware)).
+4. **Set up the box.** The console shows the `:8443` address, the certificate's fingerprint and a
+   one-time setup code. Open the address, type the code and create the first appliance admin
+   ([First setup](./appliance-guide/first-setup.md)).
+5. **Install the product.** On `:8443`, open **Updates** and install the Sneakers-PAM product
+   bundle ([First setup](./appliance-guide/first-setup.md#install-the-product)).
+6. **Set up Sneakers-PAM itself.** Read the one-time setup token from the closed shell with
+   `sneakers setup-token`, open the link it prints and create the first Sneakers-PAM admin
+   ([First setup](./appliance-guide/first-setup.md#product-setup)).
 
-First boot enforces key-only SSH setup before anything else, then opens the
-`:8443` OS admin for the rest of setup (vault root key, networking, the first admin account).
+## ☸️ On your own Kubernetes {#helm}
 
-:::
+1. Make the vault's root key and keep a copy: without it no stored secret can be opened.
+2. Install the `sneakers` umbrella chart from a checkout of `sneakers-release`, with your public
+   host name.
+3. Give the gateway a setup token, run the first-run setup, then remove the token.
 
-## Upgrades and backups
+[Kubernetes with Helm](./kubernetes-helm.md) has the commands, the requirements and what you're
+responsible for.
 
-:::info[Coming in v0.1.0]
+## 👣 Next steps {#next}
 
-Upgrades are whole, signed releases applied in a scheduled window with
-automatic rollback on failure; see [Heartbeat and rotation](./concepts/heartbeat-and-rotation.md) and
-the concepts pages for how the running system behaves once it's up. Backup and restore use a
-separate key from the one you log in with, and are covered here once the appliance build lands.
-
-:::
-
-## Moving between appliances
-
-:::info[Coming in v0.1.0]
-
-`sneakers-migrate` will export a full encrypted bundle from a running
-Sneakers-PAM appliance — secrets with every version, folders, ACLs, users and groups, targets,
-schedules and the audit chain — and import it into a fresh one, re-wrapping every secret under
-the new root key.
-
-:::
+- Create folders, groups and the first shared secrets: [Admin guide](./admin-guide/index.md).
+- Connect an AI assistant: [Agents and the MCP](./user-guide/agents-and-the-mcp.md).
+- Read how the box protects its data: [Protection levels](./appliance-guide/protection.md).

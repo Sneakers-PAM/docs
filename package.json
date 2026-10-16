@@ -7,12 +7,15 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "node scripts/releases/fetch.mjs && node scripts/secret-types/generate.mjs --check && docusaurus build",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "typecheck": "tsc",
-    "test": "node --test scripts/screenshots/*.test.mjs",
-    "screenshots": "node scripts/screenshots/capture.mjs"
+    "test": "node --test scripts/screenshots/*.test.mjs scripts/secret-types/*.test.mjs scripts/releases/*.test.mjs",
+    "screenshots": "node scripts/screenshots/capture.mjs",
+    "types:generate": "node scripts/secret-types/generate.mjs",
+    "types:sync": "node scripts/secret-types/sync.mjs",
+    "releases:fetch": "node scripts/releases/fetch.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",

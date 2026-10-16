@@ -3,7 +3,7 @@
 Most of what you do with a secret you can read is self-service. An approval only comes in when a
 secret is set to need one, and even then it's always someone other than the person asking who says
 yes. The rules are the same in the web app and for an agent working through the
-[MCP](./agents-and-mcp.md).
+[MCP](../user-guide/agents-and-the-mcp.md).
 
 ## Who approves a reveal
 
