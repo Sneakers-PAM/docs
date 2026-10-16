@@ -21,6 +21,13 @@ attached to, with no copies to keep in sync; attaching or detaching one target n
 others. That link is what makes [heartbeat and rotation](./heartbeat-and-rotation.md) possible:
 Sneakers-PAM can check the secret against each of its targets, and change them together.
 
+A secret's own page lists its attached targets, with an **Attach** picker for adding another and a
+**Detach** button next to each one already there. Opening a terminal on an SSH Key or Password
+Account (SSH) secret goes straight to the only target when it has just one; with more than one
+attached, a short picker asks which to open the session on before it connects. A target's own page,
+in turn, lists every secret attached to it — useful for seeing at a glance what else shares a
+host's credential before changing or deleting the target.
+
 ### SSH host keys
 
 A target reached over SSH carries its own pinned host keys — the public keys that identify the
