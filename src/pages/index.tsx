@@ -59,11 +59,11 @@ function Hero(): ReactNode {
           scoped secret delivery, and an audit trail for every access.
         </p>
         <div className={styles.actions}>
-          <Link className="button button--primary button--lg" to="/download">
-            Download
-          </Link>
-          <Link className="button button--secondary button--lg" to="/docs/getting-started">
+          <Link className="button button--primary button--lg" to="/docs/getting-started">
             Getting started
+          </Link>
+          <Link className="button button--secondary button--lg" to="/docs/">
+            Documentation
           </Link>
           <Link className="button button--secondary button--lg" href="https://github.com/Sneakers-PAM">
             View on GitHub
@@ -71,40 +71,6 @@ function Hero(): ReactNode {
         </div>
       </div>
     </header>
-  );
-}
-
-function WhyShort(): ReactNode {
-  return (
-    <section className={styles.notice}>
-      <div className="container">
-        <p className={styles.whyPitch}>
-          A privileged access manager you own outright: a signed appliance you can roll back,
-          built so AI agents can use a credential without ever holding a copy.
-        </p>
-        <div className="row">
-          <div className="col col--6">
-            <Heading as="h3">🤖 Agents first</Heading>
-            <p>
-              An agent signs in with its own token, never a person's password, and can use a
-              secret without ever seeing it. Every tool call is audited to the token that made
-              it; revoke one and the rest keep working. Agents can't break the glass.
-            </p>
-          </div>
-          <div className="col col--6">
-            <Heading as="h3">🏠 You own it</Heading>
-            <p>
-              One signed appliance, on your own hypervisor — no cloud account to open. Run it
-              fully offline, carrying signed update files in by hand, and every unit has its own
-              way back.
-            </p>
-          </div>
-        </div>
-        <p>
-          <Link to="/docs/why">Why Sneakers-PAM →</Link>
-        </p>
-      </div>
-    </section>
   );
 }
 
@@ -133,51 +99,25 @@ function Story(): ReactNode {
       <div className="container">
         <Heading as="h2">Why it exists</Heading>
         <p>
-          Most privileged access tools were built for people at a desk, sold as a service and
-          priced per seat. Sneakers-PAM is built for how teams work now:
+          Sneakers-PAM comes from years of running privileged access in two major hospitals and a
+          private healthcare organisation, from the seats of a CISO, a VP of infrastructure and a
+          CIO. At every one of them the most dangerous passwords were the ones nobody could find
+          quickly: shared admin passwords in spreadsheets and ticket comments, values pasted into
+          chat, and audit answers spread across three logs, if they lived anywhere.
         </p>
-        <ul className={styles.whyList}>
-          <li>
-            🔐 <b>One place for every privileged credential,</b> behind the rules each folder
-            sets, instead of spreadsheets, ticket comments and chat.
-          </li>
-          <li>
-            ⚡ <b>One prompt per task.</b> It knows who's asking and what they've already proved,
-            so an outage doesn't turn into a stack of approvals. Nobody approves their own request.
-          </li>
-          <li>
-            🤖 <b>Agents as first-class users,</b> with their own tokens, using secrets without
-            holding them, and recorded as themselves.
-          </li>
-          <li>
-            🧾 <b>An audit trail nobody can quietly edit,</b> with every action in one hash-chained
-            log.
-          </li>
-          <li>
-            📦 <b>Yours to run,</b> on your own hypervisor, offline if you want, with every update
-            reversible.
-          </li>
-        </ul>
         <p>
-          Privileged access has no organisation-specific core, so Sneakers-PAM is open source
-          under Apache-2.0, for anyone who needs it.
+          The moment that sums it up: a system is down, people are waiting, and the tool holding
+          the one password that matters asks for an approval, then a second factor, then the second
+          factor again. By the third prompt nobody is thinking about the outage, only about the
+          shortcut they'll take next time. A control that costs that much attention stops being a
+          control.
         </p>
-      </div>
-    </section>
-  );
-}
-
-function UseCase(): ReactNode {
-  return (
-    <section className={styles.notice}>
-      <div className="container">
-        <Heading as="h2">🤖 Built for agents, not just people</Heading>
         <p>
-          AI agents and automated tools need credentials as much as people do. Sneakers-PAM's MCP
-          server lets an agent find, use and even generate secrets through the same approvals and
-          audit trail a person would use — see{' '}
-          <Link to="/docs/use-cases/agent-vault">the vault-for-agents use case</Link> for a hub of
-          agents keeping their credentials out of every workspace they touch.
+          So Sneakers-PAM is built around one idea: know who's asking and what they've already
+          proved, instead of asking again. Owners decide and nobody approves their own request, one
+          task gets one prompt, and every action lands in an audit trail nobody can quietly edit.
+          Privileged access has no organisation-specific core, so it's open source, for anyone who
+          needs it.
         </p>
       </div>
     </section>
@@ -210,10 +150,8 @@ export default function Home(): ReactNode {
     <Layout title="Home" description={siteConfig.tagline}>
       <Hero />
       <main>
-        <WhyShort />
         <Features />
         <Story />
-        <UseCase />
         <PreReleaseNotice />
       </main>
     </Layout>

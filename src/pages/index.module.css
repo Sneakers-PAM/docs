@@ -54,26 +54,3 @@
 .notice {
   padding: 1rem 0 3rem;
 }
-
-.whyPitch {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
-.featureIcon {
-  display: block;
-  font-size: 2rem;
-  line-height: 1;
-  margin-bottom: 0.6rem;
-}
-
-.whyList {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 1.25rem;
-}
-
-.whyList li {
-  margin-bottom: 0.6rem;
-}
