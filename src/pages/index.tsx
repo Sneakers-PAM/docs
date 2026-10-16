@@ -62,8 +62,8 @@ function Hero(): ReactNode {
           <Link className="button button--primary button--lg" to="/docs/getting-started">
             Getting started
           </Link>
-          <Link className="button button--secondary button--lg" to="/docs/concepts">
-            Concepts
+          <Link className="button button--secondary button--lg" to="/docs/">
+            Documentation
           </Link>
           <Link className="button button--secondary button--lg" href="https://github.com/Sneakers-PAM">
             View on GitHub

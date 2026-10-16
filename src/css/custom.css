@@ -65,3 +65,32 @@ h1, h2, h3,
   font-family: var(--ifm-heading-font-family);
   letter-spacing: -0.02em;
 }
+
+/* Light theme: every surface is plain white, and colour moves to the borders
+   and the text, so nothing is printed on a pale tint. */
+:root:not([data-theme='dark']) {
+  --sp-bg: #FFFFFF;
+  --sp-surface: var(--sp-bg);
+  --sp-sunken: var(--sp-bg);
+  --sp-muted: #454B58;
+  --ifm-color-primary-contrast-background: var(--sp-bg);
+  --ifm-color-secondary-contrast-background: var(--sp-bg);
+  --ifm-color-success-contrast-background: var(--sp-bg);
+  --ifm-color-info-contrast-background: var(--sp-bg);
+  --ifm-color-warning-contrast-background: var(--sp-bg);
+  --ifm-color-danger-contrast-background: var(--sp-bg);
+  --ifm-code-background: var(--sp-bg);
+  --prism-background-color: var(--sp-bg);
+}
+
+:root:not([data-theme='dark']) .theme-admonition,
+:root:not([data-theme='dark']) .alert {
+  background-color: var(--sp-bg);
+  border: 1px solid var(--sp-border-strong);
+  border-left-width: 5px;
+}
+
+:root:not([data-theme='dark']) .theme-code-block,
+:root:not([data-theme='dark']) code {
+  border: 1px solid var(--sp-border);
+}
