@@ -37,7 +37,10 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Guides',
       collapsible: false,
-      items: [{type: 'doc', id: 'mcp-guide', label: 'Using the MCP'}],
+      items: [
+        {type: 'doc', id: 'mcp-guide', label: 'Using the MCP'},
+        {type: 'doc', id: 'github-app-guide', label: 'Storing a GitHub App'},
+      ],
     },
     {
       type: 'category',

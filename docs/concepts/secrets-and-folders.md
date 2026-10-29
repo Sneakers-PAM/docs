@@ -11,6 +11,11 @@ with a required field left empty is refused, naming the field, the same way an i
 a drop-down field is. A secret that already had one empty from before this was enforced still
 opens and works; the next edit that saves that field is what completes it.
 
+Some types get an editor of their own. A **GitHub App** secret takes the App's `.pem` file
+directly and checks it's the right kind of key before it's stored, and its page has a **Replace
+private key** action for when the key is rotated on GitHub. See
+[Storing a GitHub App](../github-app-guide.md).
+
 Secrets live in **folders**, and folders can be nested. A folder is where access control actually
 happens: who can see that a secret exists, who can reveal its value, who can approve a request for
 it, and who is just kept informed. A secret inherits its folder's rules unless it has its own.
