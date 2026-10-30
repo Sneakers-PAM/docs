@@ -46,7 +46,7 @@ This lists the names of the secrets, not their values. It's a safe way to look a
 
 This is the one that needs the most care. Revealing a value is always written down in
 Sneakers-PAM's history, so there's a record of who asked and when. For a secret you can read, it
-just works, with no extra sign-in step once you've used `/login`. If the secret is set to need an
+just works, with no extra sign-in step once your assistant is signed in. If the secret is set to need an
 approval, an owner or approver says yes first (never you), or, when nobody else can, you confirm
 the task once in your browser. See [who approves what](./concepts/approvals.md#who-approves-a-reveal).
 

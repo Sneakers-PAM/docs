@@ -10,6 +10,8 @@ const sidebars: SidebarsConfig = {
       items: [
         {type: 'link', label: 'Home', href: '/'},
         {type: 'doc', id: 'getting-started', label: 'Getting started'},
+        {type: 'doc', id: 'install-proxmox', label: 'Install on Proxmox VE'},
+        {type: 'doc', id: 'release-notes', label: 'Release notes'},
       ],
     },
     {
@@ -39,6 +41,7 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         {type: 'doc', id: 'mcp-guide', label: 'Using the MCP'},
+        {type: 'doc', id: 'cli-sign-in-guide', label: 'Signing in from the command line'},
         {type: 'doc', id: 'github-app-guide', label: 'Storing a GitHub App'},
       ],
     },
