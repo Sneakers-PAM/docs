@@ -37,6 +37,9 @@ verifying the signature before the image is built.
 
 ## Install
 
+On Proxmox VE, the appliance ships as a `qcow2` disk image from v0.1.0-rc.4: see
+[Install on Proxmox VE](./install-proxmox.md). It hasn't been tried on a real Proxmox VE host yet.
+
 :::info[Coming in v0.1.0]
 
 First boot enforces key-only SSH setup before anything else, then opens the
