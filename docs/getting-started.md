@@ -47,6 +47,22 @@ First boot enforces key-only SSH setup before anything else, then opens the
 
 :::
 
+## The appliance admin pages
+
+After setup, the box keeps its own admin pages at `https://<address>:8443/`, with a sign-in of
+their own, separate from your Sneakers-PAM account.
+
+- **Getting there as root.** Signed in to the admin console as root, open the account menu and
+  choose **Appliance admin**. It opens `https://<host name>:8443/` in a new tab, using the host
+  name the box reports for itself. No other account gets the item, and it isn't there on a plain
+  Kubernetes install or when the box doesn't know its host name. The link doesn't sign you in:
+  the appliance admin asks for its own sign-in.
+- **No autofill.** The browser and password managers (1Password, LastPass, Bitwarden) don't fill
+  in the fields on these pages, so your own sign-in never lands in the email settings' relay
+  username and password. The same goes for the network, backups, certificates, update mirror and
+  access fields and the typed confirmations. Only the sign-in, the last sign-in step of setup, the
+  current password when you change yours, and the authenticator code boxes leave autofill on.
+
 ## Upgrades and backups
 
 :::info[Coming in v0.1.0]
