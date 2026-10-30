@@ -29,7 +29,20 @@ Sneakers-PAM can check the secret against each of its targets, and change them t
 A secret's own page lists its attached targets, with an **Attach** picker for adding another and a
 **Detach** button next to each one already there. Opening a terminal on an SSH Key or Password
 Account (SSH) secret goes straight to the only target when it has just one; with more than one
-attached, a short picker asks which to open the session on before it connects. A target's own page,
+attached, a short picker asks which to open the session on before it connects.
+
+When the terminal can't connect yet, **Open terminal** stays in the secret's **Actions** menu,
+disabled, with the reason beside it:
+
+- **Attach a target first.** The secret has no target attached.
+- **Its target doesn't connect over SSH.** None of its targets uses an SSH connection.
+- **Pin the target's host key first.** None of its SSH targets has a pinned host key yet (see
+  [SSH host keys](#ssh-host-keys)). A site admin also gets **Open the target in the admin app**
+  in the same menu, to scan and pin it there. Anyone else is told an admin needs to pin it.
+
+One SSH target with a pinned host key is enough to turn the action back on.
+
+A target's own page,
 in turn, lists every secret attached to it — useful for seeing at a glance what else shares a
 host's credential before changing or deleting the target.
 
