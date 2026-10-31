@@ -1,13 +1,15 @@
 # Changing the appliance's network
 
-You can change the appliance's address, gateway, DNS and the rest after setup, on the `:8443`
-**Network** page, over SSH, or on the console. A change can cut off the session that made it, so
+You can change the appliance's address, gateway, DNS and the rest on the `:8443` **Network** page,
+over SSH, or on the console. On the console you don't have to finish setup first: see
+[On the console](#on-the-console). A change can cut off the session that made it, so
 you see what it will do before anything moves. Once you commit a change it's kept for good, with no
 timed revert.
 
 ## Before you start
 
-- You're an owner on the appliance. Staging and committing are for owners only.
+- You're an owner on the appliance. Staging and committing are for owners only. The console doesn't
+  ask you to sign in.
 - You can reach the appliance's console, such as the VM's console in your hypervisor. You need it
   if a change shuts you out, or to find an address that DHCP or SLAAC hands out.
 - For a static address, you know the address with its prefix length, such as `192.0.2.10/24`, and
@@ -104,6 +106,18 @@ network discard
 
 Press **N** to open the network editor and make your changes. The editor shows the change and asks.
 Press Enter to apply it and keep it, or **E** to go back with nothing applied.
+
+**N** is on the console at two points:
+
+- **Before setup, when the box has no address.** If DHCP gives the box no address within 30 seconds
+  of first boot, the console says so and offers **N** to set an address by hand, or **R** to wait for
+  DHCP again. You can do this before any setup step. Once the change is kept, the box moves on to the
+  setup page at that address.
+- **After setup, at any time.** The console's main screen always offers **N**.
+
+If DHCP gives the box an address on first boot, the console goes straight to the setup page's
+address and code, and **N** isn't offered for the network until setup finishes. On that screen, **N**
+only appears when the setup code has locked, and it shows a new code.
 
 ## If the allow-list shuts you out
 
