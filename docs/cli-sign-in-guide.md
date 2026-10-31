@@ -99,7 +99,8 @@ is renewed, fetch and check it again.
   the same way ssh treats a private key.
 - If a keyring starts running later, the token from the file is still found, and the next `login`
   moves it into the keyring and removes the file.
-- On other systems `login` refuses. Set `SNEAKERS_TOKEN` to a personal token instead.
+- On Windows and other systems, `login` refuses for now. Set `SNEAKERS_TOKEN` to a personal token
+  instead. The Windows version comes out right before v0.1.0.
 - `SNEAKERS_TOKEN`, when it's set, is always used instead of the stored token.
 
 ## Sign in on a box with no browser
