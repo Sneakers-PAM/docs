@@ -5,11 +5,12 @@ boots it. On the first boot the appliance enrols its own Secure Boot keys and re
 second it keeps its disk keys in the VM's TPM and opens its setup page. You only need the Proxmox
 VE web UI and the `qm` command on the Proxmox host.
 
-:::warning[Untested on Proxmox VE so far]
+:::warning[Still new on Proxmox VE]
 
-The `qcow2` image is new in v0.1.0-rc.4, and it hasn't been imported into a real Proxmox VE host
-yet. CI boots it in QEMU with exactly the VM shape below, but that isn't the same as Proxmox. If a
-step doesn't match what you see, please
+The `qcow2` image is new in v0.1.0-rc.4. Trying that image on Proxmox VE led to several fixes in
+v0.1.0-rc.5, but this version and the display steps at the end of this page haven't been run on a
+real Proxmox VE host yet. CI boots the image in QEMU with exactly the VM shape below, but that isn't
+the same as Proxmox. If a step doesn't match what you see, please
 [open an issue](https://github.com/Sneakers-PAM/sneakers-appliance/issues/new/choose) with the
 exact output, and leave out your addresses, host names and any passwords.
 
@@ -22,7 +23,7 @@ exact output, and leave out your addresses, host names and any passwords.
   is used at first), and a bridge for the VM's network, such as `vmbr0`.
 - 4 CPU cores and 16 GiB of memory for the VM.
 - A free VM ID, such as `120`. `pvesh get /cluster/nextid` prints one.
-- The release you're installing, such as `0.1.0-rc.4` (the tag without its `v`), from the
+- The release you're installing, such as `0.1.0-rc.5` (the tag without its `v`), from the
   [appliance releases](https://github.com/Sneakers-PAM/sneakers-appliance/releases).
 - To check the release's signature as well as its checksum,
   [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) on the Proxmox host.
@@ -36,7 +37,7 @@ goes. Change the values to yours:
 VMID=120
 STORAGE=local-lvm
 BRIDGE=vmbr0
-VERSION=0.1.0-rc.4
+VERSION=0.1.0-rc.5
 IMAGE="/root/sneakers-appliance-$VERSION-amd64.qcow2"
 ```
 
@@ -119,10 +120,18 @@ reinstalling.
 After the restart, the appliance asks where to keep its disk keys, with **Use the TPM
 (recommended)** selected. Press Enter. It formats its data volumes, then shows `Protection: full`,
 the setup address (`https://<address>:8443`), the certificate fingerprint and a one-time setup
-code.
+code. The code is 16 characters and never uses `0`, `1`, `G`, `I`, `L`, `O`, `Q` or `U`, so look-alike
+characters can't trip you up.
 
 Open the address in a browser, check the fingerprint against the console, enter the code and follow
 the setup steps: the first admin, the recovery keys and the rest.
+
+The recovery key you make or add here isn't a login key, and SSH and PuTTY won't accept it. Keep it
+offline. For SSH, get a login key from the **Access** page once setup is finished; it comes with a
+`.ppk` file for PuTTY.
+
+After a restart or a shutdown, the appliance can take more than 5 minutes to come back. That's
+expected.
 
 ## 6. Check the guest agent
 
@@ -137,7 +146,8 @@ qm shutdown "$VMID"
 ```
 
 `ping` prints nothing when the agent answers. `qm shutdown` stops the appliance's services in order
-and powers it off, which can take a few minutes.
+and powers it off, which can take a few minutes. When you next start it, it can take more than 5
+minutes to come back.
 
 The agent answers only those kinds of requests. It refuses to run programs, read or write files, or
 set passwords, so `qm guest exec` fails. The Proxmox host gets no way into the appliance that its
