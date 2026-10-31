@@ -137,7 +137,8 @@ qm shutdown "$VMID"
 ```
 
 `ping` prints nothing when the agent answers. `qm shutdown` stops the appliance's services in order
-and powers it off, which can take a few minutes.
+and powers it off, which can take more than 5 minutes. After a restart, or when you next start it
+after a shutdown, it can take more than 5 minutes to come back. That's expected.
 
 The agent answers only those kinds of requests. It refuses to run programs, read or write files, or
 set passwords, so `qm guest exec` fails. The Proxmox host gets no way into the appliance that its
