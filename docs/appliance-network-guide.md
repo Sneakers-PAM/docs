@@ -117,6 +117,30 @@ To get back in, go to the box's console:
 3. Check that the admin page opens, then press **K** to keep the change. If you don't, the box puts
    the old list back by itself.
 
+## When the address changes, the certificate follows
+
+The box's own certificate names the box's addresses, so it changes when they do. You'll see this as
+one browser warning, and you can always check it: the console shows the new fingerprint.
+
+- **On first boot,** the console shows the address first, with "shown once the setup page is up"
+  under the fingerprint. Up to 30 seconds later the fingerprint and the page appear. That
+  fingerprint is the one to check.
+- **After a static change** on the console, over SSH or on the Network page, commit it and your
+  session may drop. About 30 seconds later the box has a new certificate. The browser warns once.
+  Check the new fingerprint on the console.
+- **When DHCP moves the lease,** nobody has to do anything. About 30 seconds later the box replaces
+  its certificate, and the next visit warns. For 7 days the console says when and why, next to the
+  new fingerprint, and the audit log has both fingerprints.
+- **When the old address comes back,** the old certificate and fingerprint come back with it.
+
+Short network flaps and normal reboots change nothing, and neither does a change that isn't kept.
+
+A certificate you assigned yourself is never replaced. The existing warning tells you if it stops
+covering the box.
+
+Port 443 follows within about a minute when it uses the box's own certificate. That certificate
+names management addresses only, so opening 443 by a service-interface address always warns.
+
 ## On an older base
 
 Stage and commit need the Base OS that came with them. On an older one, the Network page says it
