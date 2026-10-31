@@ -44,6 +44,9 @@ const sidebars: SidebarsConfig = {
         {type: 'doc', id: 'appliance-updates-guide', label: 'Updating the appliance'},
         {type: 'doc', id: 'cli-sign-in-guide', label: 'Signing in from the command line'},
         {type: 'doc', id: 'github-app-guide', label: 'Storing a GitHub App'},
+        {type: 'doc', id: 'change-type-guide', label: "Changing a secret's type"},
+        {type: 'doc', id: 'appliance-network-guide', label: "Changing the appliance's network"},
+        {type: 'doc', id: 'support-bundle-guide', label: 'Getting a support bundle'},
       ],
     },
     {

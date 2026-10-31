@@ -2,9 +2,10 @@
 
 A **secret** is a credential Sneakers-PAM stores on your behalf: a password, a key, a token, or
 another sensitive value. Every secret keeps its full history — each past value stays available,
-not just the current one — so you can see what changed and when. Changing a secret's type reads
-in that history as the change it actually was (old type to new, fields added, renamed or carried
-over), not just a list of fields that happen to differ.
+not just the current one — so you can see what changed and when. Changing a secret's type (see
+[Changing a secret's type](../change-type-guide.md)) reads in that history as the change it
+actually was (old type to new, fields added, renamed or carried over), not just a list of fields
+that happen to differ.
 
 A secret's type decides which fields it has, and some of them are required: a credential saved
 with a required field left empty is refused, naming the field, the same way an invalid choice on
@@ -18,7 +19,9 @@ private key** action for when the key is rotated on GitHub. See
 
 Secrets live in **folders**, and folders can be nested. A folder is where access control actually
 happens: who can see that a secret exists, who can reveal its value, who can approve a request for
-it, and who is just kept informed. A secret inherits its folder's rules unless it has its own.
+it, and who is just kept informed. A secret inherits its folder's rules unless it has its own. The
+top of your personal folder holds folders, not secrets, so the staff app doesn't offer it as a
+place for a secret: make a folder inside it first.
 
 A secret can also be linked to one or more **targets** — the systems it actually protects, such as
 a server account or a service's own config. One SSH key can open a session on every host it's
@@ -29,7 +32,20 @@ Sneakers-PAM can check the secret against each of its targets, and change them t
 A secret's own page lists its attached targets, with an **Attach** picker for adding another and a
 **Detach** button next to each one already there. Opening a terminal on an SSH Key or Password
 Account (SSH) secret goes straight to the only target when it has just one; with more than one
-attached, a short picker asks which to open the session on before it connects. A target's own page,
+attached, a short picker asks which to open the session on before it connects.
+
+When the terminal can't connect yet, **Open terminal** stays in the secret's **Actions** menu,
+disabled, with the reason beside it:
+
+- **Attach a target first.** The secret has no target attached.
+- **Its target doesn't connect over SSH.** None of its targets uses an SSH connection.
+- **Pin the target's host key first.** None of its SSH targets has a pinned host key yet (see
+  [SSH host keys](#ssh-host-keys)). A site admin also gets **Open the target in the admin app**
+  in the same menu, to scan and pin it there. Anyone else is told an admin needs to pin it.
+
+One SSH target with a pinned host key is enough to turn the action back on.
+
+A target's own page,
 in turn, lists every secret attached to it — useful for seeing at a glance what else shares a
 host's credential before changing or deleting the target.
 
@@ -57,3 +73,28 @@ Advanced view: clicking a subject's Reveal cell cycles blank, allow, **own**, de
 sits between the plain allow and deny it narrows. A secret's own page shows which principal created
 it, so an admin checking this grant can see at a glance whose secrets a given own-reveal subject
 can actually reveal.
+
+### Top-level folders
+
+By default, anyone signed in can create a top-level folder, with **New shared folder** in the staff
+app's sidebar or the top-level choice in the **New Folder** dialog. A personal token can too, which
+is how an agent makes one (see [Using the MCP](../mcp-guide.md#create-a-folder)).
+
+- **It belongs to its creator.** If a token made it, it belongs to the token's user. The owner
+  manages it and shares it with the people who need it.
+- **Everyone signed in sees it listed, by name and owner.** The contents stay with its owners and
+  site admins until an owner shares it.
+- **Tokens see it once it's shared.** Until then it isn't in a token's folder list.
+- **Agents can't share.** No token can change a folder's sharing, not even its owner's. A person
+  does that in the staff app.
+
+A service account or workload can't make a top-level folder, because it has no user to own it.
+
+To limit this, a site admin turns on **Restrict top-level folders to admins** in the admin console's
+**Settings**. It's off by default. While it's on, only site admins and root can create a top-level
+folder, in the staff app or through a token whose owner is one. Anyone else is refused, and the
+message names the setting. Subfolders aren't affected.
+
+Moving a folder to the top level follows the same setting, so a subfolder can't be promoted around
+it. The staff app offers that move to site admins only, and a token can't make it at all. Reordering
+the folders already at the top level is separate, and needs an admin.

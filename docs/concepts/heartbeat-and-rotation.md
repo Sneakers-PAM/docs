@@ -19,6 +19,12 @@ one of a small set of states:
 A drifting or unreachable secret is a signal something changed outside Sneakers-PAM — worth
 looking into even before the next scheduled rotation.
 
+An LDAPS target whose certificate fails its check reads as **Failed: untrusted certificate**, with
+the reason in the heartbeat's detail, and the credential is never sent to it (see
+[Untrusted certificate or unreachable](#untrusted-certificate-or-unreachable)). An LDAPS certificate
+still has to chain to the system's roots. Pinning a target's TLS certificate, as you can pin an SSH
+host key, isn't available yet: the connector can check pins, but nothing sets them.
+
 A new secret of a heartbeat-capable type starts with its heartbeat **off** until it's actually
 ready to check: it needs a target with a connection, and — for an SSH key — a host key pinned on
 that target (see [Secrets and folders](./secrets-and-folders.md#ssh-host-keys)). Once that's in

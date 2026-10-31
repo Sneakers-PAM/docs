@@ -20,6 +20,10 @@ at the first state change or when the day closes. A failure, a host-key refusal 
 person or agent action still get their own record, exactly as before — only the noise of a
 healthy check running every few minutes is rolled up.
 
+A trail stays with the install that recorded it. Moving to a new appliance leaves it on the old
+one, and the new trail starts with one "imported from" record naming the old appliance and what
+came across (see [Moving between appliances](../getting-started.md#moving-between-appliances)).
+
 The trail records metadata about actions, never secret material itself — see
 [Secrets and folders](./secrets-and-folders.md) for where the values themselves live, and
 [Break-glass](./break-glass.md) for why that path in particular always lands at the audit

@@ -5,11 +5,12 @@ boots it. On the first boot the appliance enrols its own Secure Boot keys and re
 second it keeps its disk keys in the VM's TPM and opens its setup page. You only need the Proxmox
 VE web UI and the `qm` command on the Proxmox host.
 
-:::warning[Untested on Proxmox VE so far]
+:::warning[Still new on Proxmox VE]
 
-The `qcow2` image is new in v0.1.0-rc.4, and it hasn't been imported into a real Proxmox VE host
-yet. CI boots it in QEMU with exactly the VM shape below, but that isn't the same as Proxmox. If a
-step doesn't match what you see, please
+The `qcow2` image is new in v0.1.0-rc.4. Trying that image on Proxmox VE led to several fixes in
+v0.1.0-rc.5, but this version and the display steps at the end of this page haven't been run on a
+real Proxmox VE host yet. CI boots the image in QEMU with exactly the VM shape below, but that isn't
+the same as Proxmox. If a step doesn't match what you see, please
 [open an issue](https://github.com/Sneakers-PAM/sneakers-appliance/issues/new/choose) with the
 exact output, and leave out your addresses, host names and any passwords.
 
@@ -22,7 +23,7 @@ exact output, and leave out your addresses, host names and any passwords.
   is used at first), and a bridge for the VM's network, such as `vmbr0`.
 - 4 CPU cores and 16 GiB of memory for the VM.
 - A free VM ID, such as `120`. `pvesh get /cluster/nextid` prints one.
-- The release you're installing, such as `0.1.0-rc.4` (the tag without its `v`), from the
+- The release you're installing, such as `0.1.0-rc.5` (the tag without its `v`), from the
   [appliance releases](https://github.com/Sneakers-PAM/sneakers-appliance/releases).
 - To check the release's signature as well as its checksum,
   [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) on the Proxmox host.
@@ -36,7 +37,7 @@ goes. Change the values to yours:
 VMID=120
 STORAGE=local-lvm
 BRIDGE=vmbr0
-VERSION=0.1.0-rc.4
+VERSION=0.1.0-rc.5
 IMAGE="/root/sneakers-appliance-$VERSION-amd64.qcow2"
 ```
 
@@ -119,10 +120,18 @@ reinstalling.
 After the restart, the appliance asks where to keep its disk keys, with **Use the TPM
 (recommended)** selected. Press Enter. It formats its data volumes, then shows `Protection: full`,
 the setup address (`https://<address>:8443`), the certificate fingerprint and a one-time setup
-code.
+code. The code is 16 characters and never uses `0`, `1`, `G`, `I`, `L`, `O`, `Q` or `U`, so look-alike
+characters can't trip you up.
 
 Open the address in a browser, check the fingerprint against the console, enter the code and follow
 the setup steps: the first admin, the recovery keys and the rest.
+
+The recovery key you make or add here isn't a login key, and SSH and PuTTY won't accept it. Keep it
+offline. For SSH, get a login key from the **Access** page once setup is finished; it comes with a
+`.ppk` file for PuTTY.
+
+After a restart or a shutdown, the appliance can take more than 5 minutes to come back. That's
+expected.
 
 ## 6. Check the guest agent
 
@@ -164,6 +173,17 @@ admins don't already have.
 - **`qm agent "$VMID" ping` says the agent isn't running:** the appliance starts the agent once it's
   past the Secure Boot screen, so wait for the second boot. Check that `qm config "$VMID"` shows
   `agent: enabled=1`.
+- **The console's text is small, or a code is hard to read:** OVMF usually starts the screen at
+  800x600, so the appliance uses a smaller font (66x27). At 1024x768 it uses its large font (64x24).
+  The setting stays on the VM's EFI disk, so you only do this once, and it doesn't affect the disk
+  keys sealed to the TPM:
+
+  1. Stop the VM with `qm shutdown "$VMID"`, open its **Console** and click **Start Now**.
+  2. When the Proxmox logo shows, press Esc until the firmware menu opens.
+  3. Open **Device Manager**, then **OVMF Platform Configuration**.
+  4. Set **Change Preferred Resolution for Next Boot** to **1024x768**, then pick **Commit Changes
+     and Exit**.
+  5. Press Esc until you're back at the main menu, then pick **Reset**.
 
 The appliance repository keeps the same steps in
 [docs/proxmox-vm.md](https://github.com/Sneakers-PAM/sneakers-appliance/blob/main/docs/proxmox-vm.md).

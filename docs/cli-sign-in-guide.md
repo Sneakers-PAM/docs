@@ -9,14 +9,18 @@ You never see or copy the token.
 
 - You can sign in to the Sneakers-PAM staff app, with your second factor.
 - You know your Sneakers-PAM address, such as `https://sneakers.example.org`. It must be `https://`.
-- MCP is turned on for your appliance. Tokens from `login` are recorded like an MCP client's, so
-  while MCP is off, `login` and its token are refused.
 - You have Go installed, to install the commands:
 
   ```sh
-  go install github.com/Sneakers-PAM/sneakers-mcp/cmd/sneakers-put@v0.1.0-rc.4
-  go install github.com/Sneakers-PAM/sneakers-mcp/cmd/sneakers-run@v0.1.0-rc.4
+  go install github.com/Sneakers-PAM/sneakers-mcp/cmd/sneakers-put@v0.1.0-rc.5
+  go install github.com/Sneakers-PAM/sneakers-mcp/cmd/sneakers-run@v0.1.0-rc.5
   ```
+
+To sign in to a new appliance, you also need `openssl` on your machine and a sign-in to the box's
+`:8443` admin page.
+
+`login` signs in as the Sneakers CLI, not as an MCP client, so it works whether MCP is on or off on
+your appliance. That takes the commands and the appliance from v0.1.0-rc.5 or later.
 
 ## Sign in
 
@@ -45,6 +49,44 @@ You never see or copy the token.
 From then on, both commands find the token for the address in `SNEAKERS_URL` by themselves. The
 token also shows under **My tokens** in the staff app.
 
+## Sign in to a new appliance
+
+A new appliance serves Sneakers-PAM with its own self-signed certificate until an owner uploads one
+on the `:8443` **Certificates** page. No system trusts that certificate, so `login` fails with a
+certificate error. Give the commands that one certificate. Certificate checking stays on: the host
+name must still match, and a box that presents any other certificate is refused.
+
+1. Fetch the certificate the box serves:
+
+   ```sh
+   mkdir -p ~/.config/sneakers
+   openssl s_client -connect sneakers.example.org:443 -servername sneakers.example.org </dev/null 2>/dev/null \
+     | openssl x509 -outform PEM > ~/.config/sneakers/box.pem
+   ```
+
+2. Print its fingerprint:
+
+   ```sh
+   openssl x509 -in ~/.config/sneakers/box.pem -noout -fingerprint -sha256
+   ```
+
+3. On the `:8443` **Certificates** page, compare it with the fingerprint shown for **Product (443)**.
+   They must match exactly. If they don't, something else answered instead of your box, so don't
+   use the file.
+
+4. Point the commands at the file and sign in:
+
+   ```sh
+   export SNEAKERS_URL=https://sneakers.example.org
+   export SNEAKERS_CA_FILE=~/.config/sneakers/box.pem
+   sneakers-put login
+   ```
+
+`-ca-file <pem>` does the same for one run, and wins over `SNEAKERS_CA_FILE`. A file that can't be
+read, holds no certificate or also holds a private key is refused before any request. Once the box
+has a certificate your system already trusts, unset `SNEAKERS_CA_FILE`. If the box's own certificate
+is renewed, fetch and check it again.
+
 ## Where the token is kept
 
 | Your machine | Where the token goes |
@@ -57,7 +99,8 @@ token also shows under **My tokens** in the staff app.
   the same way ssh treats a private key.
 - If a keyring starts running later, the token from the file is still found, and the next `login`
   moves it into the keyring and removes the file.
-- On other systems `login` refuses. Set `SNEAKERS_TOKEN` to a personal token instead.
+- On Windows and other systems, `login` refuses for now. Set `SNEAKERS_TOKEN` to a personal token
+  instead. The Windows version comes out right before v0.1.0.
 - `SNEAKERS_TOKEN`, when it's set, is always used instead of the stored token.
 
 ## Sign in on a box with no browser
@@ -102,7 +145,9 @@ sneakers-put logout
 ```
 
 It removes the token from this machine and says where it was. To end the token on the server too,
-revoke it under **My tokens** in the staff app.
+revoke it under **My tokens** in the staff app. A revoked token stays on that list until you select
+**Delete** on its row and confirm. The audit trail keeps the record. Only a revoked token has
+**Delete**.
 
 ## What to do next
 

@@ -9,8 +9,9 @@ file or an environment variable somewhere it can't be tracked.
 ## How it fits together
 
 An agent talks to the MCP server using the Model Context Protocol. The server exposes a small set
-of tools — finding secrets, listing folders, revealing or generating a value, running something
-against a target with a secret injected rather than exposed — backed by the same gateway the
+of tools — finding secrets, listing and creating folders, revealing or generating a value,
+generating an SSH key whose private half the agent never sees, running something against a target
+with a secret injected rather than exposed — backed by the same gateway the
 staff and admin apps use. Nothing the agent does skips the vault's normal rules.
 
 ## Why it's treated carefully

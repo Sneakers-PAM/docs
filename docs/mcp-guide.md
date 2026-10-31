@@ -66,6 +66,25 @@ fresh value, store it, and hand it back once so it can be set on the system. If 
 fails partway, ask it to put the previous value back — that's a new version, never a rewrite of
 what came before.
 
+### Generate an SSH key
+
+> "Make a new Ed25519 SSH key called deploy-bot in the 'staging' folder."
+
+Sneakers-PAM makes the key pair and stores it as a new SSH Key secret in one step. The assistant
+only gets the public key and its fingerprint, so the private key never appears in your chat. You
+can also ask for RSA 4096, RSA 2048 or ECDSA P-256. Put the public key on the systems the key signs
+in to.
+
+### Create a folder
+
+> "Create a folder called 'agents' under 'staging'."
+
+The assistant can make a folder inside one it's allowed to write to. If you don't name a parent, it
+makes a top-level folder that belongs to you. An admin can restrict top-level folders to admins, and
+the assistant then tells you so. It can't share a folder: you do that in the staff app, and the
+assistant's token doesn't see a new top-level folder until then. See
+[Top-level folders](./concepts/secrets-and-folders.md#top-level-folders).
+
 ### Attach a secret to another system
 
 > "This SSH key also needs to work on host-b — attach it there too."
