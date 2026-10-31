@@ -151,3 +151,137 @@ page, such as the
   "30 minutes", instead of the name of the setting behind it.
   ([sneakers-gateway#142](https://github.com/Sneakers-PAM/sneakers-gateway/pull/142),
   [sneakers-web#333](https://github.com/Sneakers-PAM/sneakers-web/pull/333))
+
+## v0.1.0-rc.3
+
+### New
+
+- **Service images for arm64.** Every service image now publishes for both `linux/amd64` and
+  `linux/arm64`, and the charts take one image tag and CPU architecture for every workload.
+  ([sneakers-appliance#470](https://github.com/Sneakers-PAM/sneakers-appliance/pull/470),
+  [sneakers-release#137](https://github.com/Sneakers-PAM/sneakers-release/pull/137))
+- **The console's network editor is always there.** The console offers **N** whenever the network
+  service is installed, not only when the box has no address, and `network set` takes
+  `ipv4-address=`, `ipv4-gateway=` and their IPv6 equivalents.
+  ([sneakers-appliance#461](https://github.com/Sneakers-PAM/sneakers-appliance/pull/461))
+- **Help for a failed test email.** The docs now cover troubleshooting a test email that fails.
+  ([sneakers-appliance#441](https://github.com/Sneakers-PAM/sneakers-appliance/pull/441))
+
+### Fixed
+
+- **The update check skips an unfinished release.** A release still being published, or one whose
+  index doesn't verify, is skipped for the next one down.
+  ([sneakers-appliance#461](https://github.com/Sneakers-PAM/sneakers-appliance/pull/461))
+- **The box's fallback pages show the mark.** The Sneakers mark is built into the fallback page and
+  the box-state overlay.
+  ([sneakers-appliance#461](https://github.com/Sneakers-PAM/sneakers-appliance/pull/461))
+- **The disk guard reads one-time steps correctly.** A one-time step is no longer forecast as a
+  steady rate of growth.
+  ([sneakers-appliance#440](https://github.com/Sneakers-PAM/sneakers-appliance/pull/440))
+- **Long failure details wrap.** A failure detail that runs long and unbroken now wraps on the
+  box-state pages.
+  ([sneakers-appliance#436](https://github.com/Sneakers-PAM/sneakers-appliance/pull/436))
+- **Imports into newer vaults.** `sneakers-migrate` imports into a vault at migrations 4 to 6, and
+  the mapping check refuses a type change that's missing a required field.
+  ([sneakers-release#142](https://github.com/Sneakers-PAM/sneakers-release/pull/142),
+  [#131](https://github.com/Sneakers-PAM/sneakers-release/pull/131))
+- **Go 1.26.10.** The builds moved to Go 1.26.10 for GO-2026-6809.
+  ([sneakers-appliance#471](https://github.com/Sneakers-PAM/sneakers-appliance/pull/471),
+  [sneakers-release#139](https://github.com/Sneakers-PAM/sneakers-release/pull/139))
+
+## v0.1.0-rc.2
+
+### Fixed
+
+- **Large imports finish or say why they didn't.** The import's step Jobs are sized for the data, a
+  failed step ends with a reason, and a 727k-record import is part of the release gate. The import
+  page says why a step failed and can be closed while one runs.
+  ([sneakers-appliance#421](https://github.com/Sneakers-PAM/sneakers-appliance/pull/421),
+  [sneakers-web#312](https://github.com/Sneakers-PAM/sneakers-web/pull/312))
+- **Audit chain checks stay in constant memory.** The chain is verified as it's read.
+  ([sneakers-audit#59](https://github.com/Sneakers-PAM/sneakers-audit/pull/59))
+- **The terminal connects from the page's own origin.** The terminal opens on the page's origin and
+  says why it can't connect, and the SSH broker accepts that origin and refuses an unpinned target
+  up front.
+  ([sneakers-web#309](https://github.com/Sneakers-PAM/sneakers-web/pull/309),
+  [sneakers-sshbroker#71](https://github.com/Sneakers-PAM/sneakers-sshbroker/pull/71))
+- **An SSH key's public key stays in its box.** The key now wraps inside its box on the page.
+  ([sneakers-web#315](https://github.com/Sneakers-PAM/sneakers-web/pull/315))
+- **Sealing a release with a patch.** Sealing now looks for the kit in the release folder.
+  ([sneakers-appliance#429](https://github.com/Sneakers-PAM/sneakers-appliance/pull/429))
+
+## v0.1.0-rc.1
+
+The first release candidate, so everything in it was new. These are the main parts; each repository's
+GitHub Releases page has the full list.
+
+### New
+
+- **The appliance.** An OVA for VMware with a first-boot wizard, an information-only console, a
+  closed SSH shell and one-time elevation to a root shell.
+  ([sneakers-appliance#53](https://github.com/Sneakers-PAM/sneakers-appliance/pull/53),
+  [#124](https://github.com/Sneakers-PAM/sneakers-appliance/pull/124),
+  [#136](https://github.com/Sneakers-PAM/sneakers-appliance/pull/136),
+  [#78](https://github.com/Sneakers-PAM/sneakers-appliance/pull/78),
+  [#82](https://github.com/Sneakers-PAM/sneakers-appliance/pull/82))
+- **The `:8443` appliance admin.** Setup, sign-in, access, certificates, the Status page with its
+  Disk card, and a factory reset by quorum.
+  ([sneakers-appliance#73](https://github.com/Sneakers-PAM/sneakers-appliance/pull/73),
+  [#74](https://github.com/Sneakers-PAM/sneakers-appliance/pull/74),
+  [#281](https://github.com/Sneakers-PAM/sneakers-appliance/pull/281),
+  [sneakers-web#204](https://github.com/Sneakers-PAM/sneakers-web/pull/204),
+  [#205](https://github.com/Sneakers-PAM/sneakers-web/pull/205),
+  [#277](https://github.com/Sneakers-PAM/sneakers-web/pull/277))
+- **Signed updates.** Base OS, Base Web and Product update on their own from GitHub Releases or an
+  internal mirror, each phase of the product is gated on Ready, and a product can be reinstalled or
+  removed.
+  ([sneakers-appliance#245](https://github.com/Sneakers-PAM/sneakers-appliance/pull/245),
+  [#282](https://github.com/Sneakers-PAM/sneakers-appliance/pull/282),
+  [#206](https://github.com/Sneakers-PAM/sneakers-appliance/pull/206),
+  [#346](https://github.com/Sneakers-PAM/sneakers-appliance/pull/346),
+  [#378](https://github.com/Sneakers-PAM/sneakers-appliance/pull/378),
+  [#373](https://github.com/Sneakers-PAM/sneakers-appliance/pull/373))
+- **The staff and admin apps.** Browsing, secret detail, requests and checkouts for staff; users,
+  groups, types, targets, shared folders, service accounts and the audit trail for admins.
+  ([sneakers-web#86](https://github.com/Sneakers-PAM/sneakers-web/pull/86),
+  [#72](https://github.com/Sneakers-PAM/sneakers-web/pull/72),
+  [#75](https://github.com/Sneakers-PAM/sneakers-web/pull/75),
+  [#84](https://github.com/Sneakers-PAM/sneakers-web/pull/84),
+  [#85](https://github.com/Sneakers-PAM/sneakers-web/pull/85),
+  [#87](https://github.com/Sneakers-PAM/sneakers-web/pull/87),
+  [#94](https://github.com/Sneakers-PAM/sneakers-web/pull/94))
+- **Approvals.** Approval levels with no self-approval, an approver queue, one step-up window, and
+  one approval page for everything an agent run asks for.
+  ([sneakers-vault#127](https://github.com/Sneakers-PAM/sneakers-vault/pull/127),
+  [sneakers-gateway#101](https://github.com/Sneakers-PAM/sneakers-gateway/pull/101),
+  [sneakers-web#123](https://github.com/Sneakers-PAM/sneakers-web/pull/123),
+  [#116](https://github.com/Sneakers-PAM/sneakers-web/pull/116),
+  [sneakers-mcp#42](https://github.com/Sneakers-PAM/sneakers-mcp/pull/42),
+  [#46](https://github.com/Sneakers-PAM/sneakers-mcp/pull/46))
+- **Recovery and emergency access.** A site admin can browse all secrets in break-the-glass mode,
+  and a recovery role can read version history and restore a version.
+  ([sneakers-vault#130](https://github.com/Sneakers-PAM/sneakers-vault/pull/130),
+  [#92](https://github.com/Sneakers-PAM/sneakers-vault/pull/92),
+  [sneakers-gateway#110](https://github.com/Sneakers-PAM/sneakers-gateway/pull/110),
+  [sneakers-web#150](https://github.com/Sneakers-PAM/sneakers-web/pull/150))
+- **Read-only maintenance mode.** Writes are refused, and heartbeats and rotations pause.
+  ([sneakers-vault#125](https://github.com/Sneakers-PAM/sneakers-vault/pull/125),
+  [sneakers-gateway#92](https://github.com/Sneakers-PAM/sneakers-gateway/pull/92))
+- **Moving onto the appliance.** `sneakers-migrate` exports, imports and verifies, and the `:8443`
+  **Import** page runs the import.
+  ([sneakers-release#35](https://github.com/Sneakers-PAM/sneakers-release/pull/35),
+  [#86](https://github.com/Sneakers-PAM/sneakers-release/pull/86),
+  [sneakers-appliance#260](https://github.com/Sneakers-PAM/sneakers-appliance/pull/260),
+  [sneakers-web#254](https://github.com/Sneakers-PAM/sneakers-web/pull/254))
+- **Helm charts.** The services and web apps as charts, with small-box and large-box sizing
+  examples.
+  ([sneakers-release#10](https://github.com/Sneakers-PAM/sneakers-release/pull/10),
+  [#36](https://github.com/Sneakers-PAM/sneakers-release/pull/36),
+  [#45](https://github.com/Sneakers-PAM/sneakers-release/pull/45))
+- **Services check each other.** Every service call carries a workload identity.
+  ([sneakers-vault#78](https://github.com/Sneakers-PAM/sneakers-vault/pull/78),
+  [sneakers-gateway#57](https://github.com/Sneakers-PAM/sneakers-gateway/pull/57),
+  [sneakers-identity#33](https://github.com/Sneakers-PAM/sneakers-identity/pull/33),
+  [sneakers-audit#24](https://github.com/Sneakers-PAM/sneakers-audit/pull/24),
+  [sneakers-notify#30](https://github.com/Sneakers-PAM/sneakers-notify/pull/30),
+  [sneakers-connector#37](https://github.com/Sneakers-PAM/sneakers-connector/pull/37))
