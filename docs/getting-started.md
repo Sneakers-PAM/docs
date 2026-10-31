@@ -63,8 +63,9 @@ separate key from the one you log in with, and are covered here once the applian
 :::info[Coming in v0.1.0]
 
 `sneakers-migrate` will export a full encrypted bundle from a running
-Sneakers-PAM appliance — secrets with every version, folders, ACLs, users and groups, targets,
-schedules and the audit chain — and import it into a fresh one, re-wrapping every secret under
-the new root key.
+Sneakers-PAM appliance — secrets with every version, folders, ACLs, users and groups, targets
+and schedules — and import it into a fresh one, re-wrapping every secret under the new root key.
+The audit trail stays on the old appliance; the new one's chain starts with one record of the
+import, naming the old appliance.
 
 :::
